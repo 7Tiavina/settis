@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETTIS LLC - Innovating Digital Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#090A0A',
+                        primary: '#F5831F',
+                        light: '#FFFFFF',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .btn-primary {
+            @apply bg-primary text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
+        }
+        .btn-outline {
+            @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-medium transition-all duration-300 hover:bg-primary hover:text-white;
+        }
+        .card-hover {
+            @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+        }
+        .stats-card {
+            @apply bg-dark border border-gray-800 rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary;
+        }
+        .service-card {
+            @apply bg-dark border border-gray-800 rounded-2xl p-6 transition-all duration-300 hover:border-primary;
+        }
+        .nav-link {
+            @apply text-gray-300 hover:text-primary transition-colors duration-300;
+        }
+        .process-step {
+            @apply flex flex-col items-center text-center p-6 bg-dark border border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary;
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-dark bg-opacity-90 backdrop-blur-sm z-50 py-4 border-b border-gray-800">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">SETTIS<span class="text-light">LLC</span></a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link">Accueil</a>
+                <a href="#about" class="nav-link">À propos</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            <a href="#contact" class="btn-primary hidden md:block">Commencer</a>
+            <button class="md:hidden text-light" id="mobile-menu-button">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-dark border-t border-gray-800 py-4" id="mobile-menu">
+            <div class="container mx-auto px-4 flex flex-col space-y-4">
+                <a href="#" class="nav-link py-2">Accueil</a>
+                <a href="#about" class="nav-link py-2">À propos</a>
+                <a href="#services" class="nav-link py-2">Services</a>
+                <a href="#contact" class="nav-link py-2">Contact</a>
+                <a href="#faq" class="nav-link py-2">FAQ</a>
+                <a href="#contact" class="btn-primary w-full text-center mt-4">Commencer</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Innovating Digital Solutions for a <span class="text-primary">Global Future</span></h1>
+                    <p class="text-xl text-gray-300 mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#services" class="btn-primary">Découvrir nos services</a>
+                        <a href="#contact" class="btn-outline">Nous contacter</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-8 bg-primary rounded-3xl rotate-6 opacity-20 animate-pulse-slow"></div>
+                        <div class="relative bg-gradient-to-br from-gray-800 to-dark border border-gray-700 rounded-3xl p-8 transform rotate-2">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-4xl text-primary"></i>
+                                </div>
+                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                    <i class="fas fa-mobile-alt text-4xl text-primary"></i>
+                                </div>
+                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                    <i class="fas fa-cloud text-4xl text-primary"></i>
+                                </div>
+                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                    <i class="fas fa-gamepad text-4xl text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stats-card card-hover">
+                    <div class="text-4xl font-bold text-primary mb-2">2025</div>
+                    <div class="text-gray-400">Fondation</div>
+                </div>
+                <div class="stats-card card-hover">
+                    <div class="text-4xl font-bold text-primary mb-2">4</div>
+                    <div class="text-gray-400">Services principaux</div>
+                </div>
+                <div class="stats-card card-hover">
+                    <div class="text-4xl font-bold text-primary mb-2">100%</div>
+                    <div class="text-gray-400">Satisfaction client</div>
+                </div>
+                <div class="stats-card card-hover">
+                    <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+                    <div class="text-gray-400">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">À propos de <span class="text-primary">SETTIS LLC</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Fondée en 2025, SETTIS LLC est une entreprise technologique tournée vers l'avenir, dédiée à la création de solutions digitales innovantes qui comblent le fossé entre la technologie de pointe et les applications du monde réel.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Notre histoire</h3>
+                    <p class="text-gray-300 mb-6">SETTIS LLC est née d'une vision visant à démontrer l'accès à des solutions digitales de haute qualité. Fondée en 2025, notre entreprise a été construite sur le principe que la technologie innovante devrait être accessible aux entreprises de toutes tailles, des startups aux grandes entreprises.</p>
+                    <p class="text-gray-300">Notre équipe combine des années d'expérience dans le développement logiciel, les applications mobiles et l'innovation digitale. Nous nous spécialisons dans la création de solutions qui répondent non seulement aux besoins actuels, mais anticipent également les défis et opportunités futurs.</p>
+                </div>
+                <div class="bg-gray-800 rounded-3xl p-8 border border-gray-700 card-hover">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">Nos valeurs fondamentales</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Innovation</h4>
+                            <p class="text-gray-300">Nous repoussons constamment les limites de la technologie pour créer des solutions de pointe qui stimulent le progrès et transforment les industries.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Fiabilité</h4>
+                            <p class="text-gray-300">Notre engagement envers la qualité et la responsabilité garantit que chaque projet répond aux normes d'excellence les plus élevées.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Accessibilité mondiale</h4>
+                            <p class="text-gray-300">Nous concevons des solutions avec une perspective globale, garantissant que les clients sont accessibles et précieux pour les utilisateurs du monde entier.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-3xl p-6 border border-gray-700 card-hover">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-building text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">Fondation de l'entreprise</h4>
+                    <p class="text-gray-300">SETTIS LLC a été créée en tant que société à responsabilité limitée basée dans le Delaware, réunissant une équipe de développeurs et d'innovateurs expérimentés.</p>
+                </div>
+                <div class="bg-gray-800 rounded-3xl p-6 border border-gray-700 card-hover">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">Premier lancement de produit</h4>
+                    <p class="text-gray-300">Lancement réussi de CRIF, notre solution SaaS phare pour les pré-spécifications de cartes d'identité nationales en ligne, rationalisant les services gouvernementaux.</p>
+                </div>
+                <div class="bg-gray-800 rounded-3xl p-6 border border-gray-700 card-hover">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">Expansion du marché</h4>
+                    <p class="text-gray-300">Élargissement de nos services pour inclure le développement d'applications mobiles et le gaming PC, établissant des partenariats avec les principales plateformes de distribution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Nos <span class="text-primary">Services</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Du développement freelance aux solutions SaaS d'entreprise, nous offrons des services numériques complets qui stimulent l'innovation et la croissance des entreprises.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="service-card card-hover">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Développement Freelance</h3>
+                    <p class="text-gray-300">Services de développement web et mobile sur mesure adaptés à vos besoins commerciaux spécifiques.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Applications Web Personnalisées</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Solutions Sur Mesure</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Intégrations API</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="service-card card-hover">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Applications Mobiles</h3>
+                    <p class="text-gray-300">Applications mobiles natives et multiplateformes pour les appareils iOS et Android.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Développement iOS Natif</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Développement Android Natif</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Solutions Cross-Platform</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="service-card card-hover">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Solutions SaaS</h3>
+                    <p class="text-gray-300">Plateformes software-as-a-service évolutives conçues pour les opérations commerciales modernes.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Architecture Microservices</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Intégration de Paiement</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Développement d'API</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="service-card card-hover">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gamepad text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Jeux PC</h3>
+                    <p class="text-gray-300">Jeux PC engageants développés pour Steam et d'autres grandes plateformes de gaming.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Conception & Développement de Jeu</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Systèmes Multijoueurs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span class="text-gray-300">Intégration SDK</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#contact" class="btn-primary">Démarrer votre projet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Notre <span class="text-primary">Processus</span> de Développement</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Nous suivons une méthodologie éprouvée pour garantir que votre projet est livré à temps, dans le budget et dépasse vos attentes.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="process-step card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">1</div>
+                    <h3 class="text-xl font-semibold mb-4">Consultation</h3>
+                    <p class="text-gray-300">Nous commençons par une consultation approfondie pour comprendre vos besoins et objectifs.</p>
+                </div>
+                <div class="process-step card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">2</div>
+                    <h3 class="text-xl font-semibold mb-4">Développement</h3>
+                    <p class="text-gray-300">Notre équipe experte développe votre solution en utilisant les dernières technologies.</p>
+                </div>
+                <div class="process-step card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">3</div>
+                    <h3 class="text-xl font-semibold mb-4">Test</h3>
+                    <p class="text-gray-300">Des tests complets garantissent que votre solution est fiable, sécurisée et performante.</p>
+                </div>
+                <div class="process-step card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">4</div>
+                    <h3 class="text-xl font-semibold mb-4">Déploiement</h3>
+                    <p class="text-gray-300">Nous gérons le processus de déploiement complet et fournissons une assistance continue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contactez-<span class="text-primary">nous</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Prêt à commencer votre prochain projet? Contactez notre équipe pour discuter de la façon dont nous pouvons vous aider à concrétiser votre vision digitale.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2">Nom complet *</label>
+                            <input type="text" id="name" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre nom complet">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">Email *</label>
+                            <input type="email" id="email" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="votre.email@exemple.com">
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2">Sujet *</label>
+                            <input type="text" id="subject" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="De quoi s'agit-il?">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2">Message *</label>
+                            <textarea id="message" rows="5" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Parlez-nous de votre projet ou demande..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">Envoyer le message</button>
+                    </form>
+                </div>
+                <div>
+                    <div class="bg-dark border border-gray-700 rounded-2xl p-8">
+                        <h3 class="text-2xl font-semibold mb-6">Restons en contact</h3>
+                        <p class="text-gray-300 mb-8">Nous sommes là pour vous aider à réussir. Que vous ayez besoin d'une application web personnalisée, d'une application mobile ou de questions sur nos services, notre équipe est prête à vous aider.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email</h4>
+                                    <p class="text-gray-300">Envoyez-nous un email à tout moment</p>
+                                    <p class="text-primary">contact@settisllc.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Adresse</h4>
+                                    <p class="text-gray-300">Notre siège social</p>
+                                    <p class="text-primary">1234 Innovation Drive, Suite 567<br>Austin, TX 78701, États-Unis</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Heures d'ouverture</h4>
+                                    <p class="text-gray-300">Quand nous sommes disponibles</p>
+                                    <p class="text-primary">Lundi - Vendredi: 9h00 - 18h00 CST<br>Samedi: 10h00 - 14h00 CST</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Questions <span class="text-primary">Fréquentes</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Trouvez des réponses aux questions courantes sur nos services, nos processus et la façon dont nous pouvons vous aider à concrétiser vos projets digitaux.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Quels types de projets SETTIS LLC propose-t-elle?</h3>
+                    <p class="text-gray-300">Nous proposons une large gamme de services incluant le développement web et mobile, les solutions SaaS d'entreprise, et le développement de jeux PC. Que vous ayez besoin d'une application personnalisée, d'une plateforme cloud ou d'un jeu, nous avons l'expertise nécessaire.</p>
+                </div>
+                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Quel est le délai typique pour un projet?</h3>
+                    <p class="text-gray-300">Le délai dépend de la complexité et de la portée du projet. Les projets simples peuvent prendre 2-4 semaines, tandis que les projets plus complexes peuvent nécessiter 3-6 mois. Nous fournissons un calendrier détaillé après l'évaluation initiale de vos besoins.</p>
+                </div>
+                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Fournissez-vous un support et une maintenance continus?</h3>
+                    <p class="text-gray-300">Oui, nous proposons des plans de support et de maintenance continus pour tous nos projets. Cela inclut les mises à jour, la correction de bugs, l'optimisation des performances et l'assistance technique selon vos besoins.</p>
+                </div>
+                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Pouvez-vous travailler avec des systèmes existants et des intégrations tierces?</h3>
+                    <p class="text-gray-300">Absolument. Nous avons de l'expérience dans l'intégration avec divers systèmes, API et services tiers. Nous pouvons travailler avec votre infrastructure existante ou recommander de nouvelles solutions qui s'intègrent parfaitement.</p>
+                </div>
+                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Quelle est votre structure tarifaire?</h3>
+                    <p class="text-gray-300">Nous proposons des modèles de tarification flexibles selon le projet : forfaitaire pour les projets bien définis, taux horaire pour les travaux continus, et modèles d'abonnement pour les services SaaS. Contactez-nous pour une estimation personnalisée.</p>
+                </div>
+                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Travaillez-vous avec des clients internationaux?</h3>
+                    <p class="text-gray-300">Oui, nous servons des clients du monde entier. Notre équipe est répartie dans différents fuseaux horaires, ce qui nous permet de fournir un support quasi continu et de collaborer efficacement avec des clients internationaux.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-xl mb-8">Vous ne trouvez pas la réponse que vous cherchez? Notre équipe est là pour vous aider.</p>
+                <a href="#contact" class="btn-primary">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12 px-4">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="text-2xl font-bold text-primary mb-4 block">SETTIS<span class="text-light">LLC</span></a>
+                    <p class="text-gray-300 mb-4">Innovating Digital Solutions for a Global Future. Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
+                    <p class="text-primary">Email: contact@settisllc.com</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Entreprise</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Accueil</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-primary transition-colors">À propos</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Légal & Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Mentions légales</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Conditions d'utilisation</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Politique de remboursement</a></li>
+                        <li><a href="#faq" class="text-gray-300 hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Restez connecté</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-300">Abonnez-vous à notre newsletter pour les dernières mises à jour</p>
+                    <div class="flex mt-2">
+                        <input type="email" placeholder="Votre email" class="bg-dark border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary w-full">
+                        <button class="bg-primary text-white px-4 rounded-r-lg">S'abonner</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-300">© 2025 SETTIS LLC – Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.card-hover, .process-step, .service-card, .stats-card');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (position < screenPosition) {
+                    element.classList.add('opacity-100');
+                    element.classList.remove('opacity-0');
+                }
+            });
+        }
+
+        // Initialize elements with opacity-0
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.card-hover, .process-step, .service-card, .stats-card');
+            elements.forEach(element => {
+                element.classList.add('opacity-0');
+                element.classList.add('transition-opacity');
+                element.classList.add('duration-700');
+            });
+            
+            // Initial check
+            animateOnScroll();
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
