@@ -54,6 +54,7 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
 </head>
 <body class="bg-light dark:bg-dark text-gray-800 dark:text-light transition-colors duration-300">
     <!-- Navigation -->
@@ -96,69 +97,50 @@
         </div>
     </nav>
 
-    <!-- Hero and Stats Wrapper -->
-    <div id="hero-stats-wrapper" class="flex flex-col justify-center items-center">
-        <!-- Hero Section -->
-        <section id="hero-section" class="pb-20">
-            <div class="container mx-auto">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-light">Innovating Digital Solutions for a <span class="text-primary">Global Future</span></h1>
-                        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
-                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <a href="#services" class="btn-primary">Découvrir nos services</a>
-                            <a href="#contact" class="btn-outline">Nous contacter</a>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight">
-                        <div class="relative">
-                            <div class="absolute -inset-8 bg-primary rounded-3xl rotate-6 opacity-20 animate-pulse-slow"></div>
-                            <div class="relative bg-gradient-to-br from-gray-100 to-light dark:from-gray-800 dark:to-dark border border-gray-200 dark:border-gray-700 rounded-3xl p-8 transform rotate-2">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                        <i class="fas fa-laptop-code text-4xl text-primary"></i>
-                                    </div>
-                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                        <i class="fas fa-mobile-alt text-4xl text-primary"></i>
-                                    </div>
-                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                        <i class="fas fa-cloud text-4xl text-primary"></i>
-                                    </div>
-                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                        <i class="fas fa-gamepad text-4xl text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+   <!-- Hero Wrapper -->
+<div id="hero-wrapper" class="relative flex flex-col justify-center items-center w-full h-screen overflow-hidden">
+    
 
-        <!-- Stats Section -->
-        <section class="py-12 bg-gray-100 dark:bg-gray-900">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="stats-card card-hover animate__animated animate__fadeInUp">
-                        <div class="text-4xl font-bold text-primary mb-2">2025</div>
-                        <div class="text-gray-600 dark:text-gray-400">Fondation</div>
-                    </div>
-                    <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                        <div class="text-4xl font-bold text-primary mb-2">4</div>
-                        <div class="text-gray-600 dark:text-gray-400">Services principaux</div>
-                    </div>
-                    <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                        <div class="text-4xl font-bold text-primary mb-2">100%</div>
-                        <div class="text-gray-600 dark:text-gray-400">Satisfaction client</div>
-                    </div>
-                    <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-                        <div class="text-4xl font-bold text-primary mb-2">24/7</div>
-                        <div class="text-gray-600 dark:text-gray-400">Support</div>
+    <!-- Hero Section -->
+    <section id="hero-section" class="w-full flex flex-col justify-center items-center px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                
+                <!-- Texte Hero aligné à gauche -->
+                <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInDown text-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-light">
+                        Innovating Digital Solutions for a <span class="text-primary">Global Future</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                        Nous créons des expériences digitales exceptionnelles à travers le développement freelance, 
+                        les solutions SaaS, les applications mobiles et le gaming PC.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#services" class="px-6 py-3 rounded-full bg-primary text-white shadow-lg hover:opacity-90 transition">
+                            Découvrir nos services
+                        </a>
+                        <a href="#contact" class="px-6 py-3 rounded-full border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition">
+                            Nous contacter
+                        </a>
                     </div>
                 </div>
+
+                <!-- Lottie Animation in foreground -->
+                <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight h-full">
+                    <lottie-player 
+                        src="cOl9HUbZPf.json" 
+                        background="transparent"  
+                        speed="1"  
+                        loop  
+                        autoplay
+                        class="w-4/5 drop-shadow-2xl h-full">
+                    </lottie-player>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
+
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-light dark:bg-dark">
@@ -330,24 +312,24 @@
 
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">1</div>
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-light mb-6">1</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Consultation</h3>
                     <p class="text-gray-600 dark:text-gray-300">Nous commençons par une consultation approfondie pour comprendre vos besoins et objectifs.</p>
                 </div>
                 <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">2</div>
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-light mb-6">2</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Développement</h3>
                     <p class="text-gray-600 dark:text-gray-300">Notre équipe experte développe votre solution en utilisant les dernières technologies.</p>
                 </div>
                 <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">3</div>
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-light mb-6">3</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Test</h3>
                     <p class="text-gray-600 dark:text-gray-300">Des tests complets garantissent que votre solution est fiable, sécurisée et performante.</p>
                 </div>
                 <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">4</div>
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-light mb-6">4</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Déploiement</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Nous gérons le processus de déploiement complet et fournissons une assistance continue.</p>
+                    <p class="text-gray-600 dark:text-gray-300">Nous gère le processus de déploiement complet et fournissons une assistance continue.</p>
                 </div>
             </div>
         </div>
