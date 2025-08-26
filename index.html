@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SETTIS LLC - Innovating Digital Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -26,29 +27,29 @@
     </script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
         .btn-primary {
-            @apply bg-primary text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
+            @apply bg-gradient-to-r from-primary to-orange-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 transform shadow-md;
         }
         .btn-outline {
-            @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-medium transition-all duration-300 hover:bg-primary hover:text-white;
+            @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg;
         }
         .card-hover {
             @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
         }
         .stats-card {
-            @apply bg-dark border border-gray-800 rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary;
+            @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 text-center transition-all duration-300 hover:border-primary hover:shadow-lg;
         }
         .service-card {
-            @apply bg-dark border border-gray-800 rounded-2xl p-6 transition-all duration-300 hover:border-primary;
+            @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 transition-all duration-300 hover:border-primary hover:shadow-lg;
         }
         .nav-link {
-            @apply text-gray-300 hover:text-primary transition-colors duration-300;
+            @apply text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium;
         }
         .process-step {
-            @apply flex flex-col items-center text-center p-6 bg-dark border border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary;
+            @apply flex flex-col items-center text-center p-6 bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl transition-all duration-300 hover:border-primary hover:shadow-lg;
         }
     </style>
 </head>
@@ -97,7 +98,7 @@
     <section class="pt-32 pb-20 px-4">
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-light">Innovating Digital Solutions for a <span class="text-primary">Global Future</span></h1>
                     <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -105,7 +106,7 @@
                         <a href="#contact" class="btn-outline">Nous contacter</a>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
+                <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight">
                     <div class="relative">
                         <div class="absolute -inset-8 bg-primary rounded-3xl rotate-6 opacity-20 animate-pulse-slow"></div>
                         <div class="relative bg-gradient-to-br from-gray-100 to-light dark:from-gray-800 dark:to-dark border border-gray-200 dark:border-gray-700 rounded-3xl p-8 transform rotate-2">
@@ -134,19 +135,19 @@
     <section class="py-12 bg-gray-100 dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="stats-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="stats-card card-hover animate__animated animate__fadeInUp">
                     <div class="text-4xl font-bold text-primary mb-2">2025</div>
                     <div class="text-gray-600 dark:text-gray-400">Fondation</div>
                 </div>
-                <div class="stats-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="text-4xl font-bold text-primary mb-2">4</div>
                     <div class="text-gray-600 dark:text-gray-400">Services principaux</div>
                 </div>
-                <div class="stats-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="text-4xl font-bold text-primary mb-2">100%</div>
                     <div class="text-gray-600 dark:text-gray-400">Satisfaction client</div>
                 </div>
-                <div class="stats-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="text-4xl font-bold text-primary mb-2">24/7</div>
                     <div class="text-gray-600 dark:text-gray-400">Support</div>
                 </div>
@@ -216,13 +217,13 @@
     <!-- Services Section -->
     <section id="services" class="py-20 bg-gray-100 dark:bg-gray-900 px-4">
         <div class="container mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Nos <span class="text-primary">Services</span></h2>
                 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Du développement freelance aux solutions SaaS d'entreprise, nous offrons des services numériques complets qui stimulent l'innovation et la croissance des entreprises.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <div class="service-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="service-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                         <i class="fas fa-laptop-code text-2xl text-light"></i>
                     </div>
@@ -243,7 +244,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="service-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="service-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                         <i class="fas fa-mobile-alt text-2xl text-light"></i>
                     </div>
@@ -264,7 +265,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="service-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="service-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                         <i class="fas fa-cloud text-2xl text-light"></i>
                     </div>
@@ -285,7 +286,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="service-card card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="service-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                         <i class="fas fa-gamepad text-2xl text-light"></i>
                     </div>
@@ -317,28 +318,28 @@
     <!-- Process Section -->
     <section class="py-20 px-4">
         <div class="container mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Notre <span class="text-primary">Processus</span> de Développement</h2>
                 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Nous suivons une méthodologie éprouvée pour garantir que votre projet est livré à temps, dans le budget et dépasse vos attentes.</p>
             </div>
 
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="process-step card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">1</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Consultation</h3>
                     <p class="text-gray-600 dark:text-gray-300">Nous commençons par une consultation approfondie pour comprendre vos besoins et objectifs.</p>
                 </div>
-                <div class="process-step card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">2</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Développement</h3>
                     <p class="text-gray-600 dark:text-gray-300">Notre équipe experte développe votre solution en utilisant les dernières technologies.</p>
                 </div>
-                <div class="process-step card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">3</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Test</h3>
                     <p class="text-gray-600 dark:text-gray-300">Des tests complets garantissent que votre solution est fiable, sécurisée et performante.</p>
                 </div>
-                <div class="process-step card-hover bg-light dark:bg-dark border-gray-200 dark:border-gray-800">
+                <div class="process-step card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
                     <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-light mb-6">4</div>
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Déploiement</h3>
                     <p class="text-gray-600 dark:text-gray-300">Nous gérons le processus de déploiement complet et fournissons une assistance continue.</p>
@@ -350,13 +351,13 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-900 px-4">
         <div class="container mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Contactez-<span class="text-primary">nous</span></h2>
                 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Prêt à commencer votre prochain projet? Contactez notre équipe pour discuter de la façon dont nous pouvons vous aider à concrétiser votre vision digitale.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12">
-                <div>
+                <div class="animate__animated animate__fadeInUp">
                     <form class="space-y-6">
                         <div>
                             <label for="name" class="block mb-2 text-gray-900 dark:text-light">Nom complet *</label>
@@ -377,7 +378,7 @@
                         <button type="submit" class="btn-primary w-full">Envoyer le message</button>
                     </form>
                 </div>
-                <div>
+                <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="bg-light dark:bg-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
                         <h3 class="text-2xl font-semibold mb-6 text-gray-900 dark:text-light">Restons en contact</h3>
                         <p class="text-gray-600 dark:text-gray-300 mb-8">Nous sommes là pour vous aider à réussir. Que vous ayez besoin d'une application web personnalisée, d'une application mobile ou de questions sur nos services, notre équipe est prête à vous aider.</p>
@@ -423,39 +424,39 @@
     <!-- FAQ Section -->
     <section id="faq" class="py-20 px-4">
         <div class="container mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Questions <span class="text-primary">Fréquentes</span></h2>
                 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Trouvez des réponses aux questions courantes sur nos services, nos processus et la façon dont nous pouvons vous aider à concrétiser vos projets digitaux.</p>
             </div>
 
             <div class="max-w-3xl mx-auto">
-                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover">
+                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Quels types de projets SETTIS LLC propose-t-elle?</h3>
                     <p class="text-gray-600 dark:text-gray-300">Nous proposons une large gamme de services incluant le développement web et mobile, les solutions SaaS d'entreprise, et le développement de jeux PC. Que vous ayez besoin d'une application personnalisée, d'une plateforme cloud ou d'un jeu, nous avons l'expertise nécessaire.</p>
                 </div>
-                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover">
+                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Quel est le délai typique pour un projet?</h3>
                     <p class="text-gray-600 dark:text-gray-300">Le délai dépend de la complexité et de la portée du projet. Les projets simples peuvent prendre 2-4 semaines, tandis que les projets plus complexes peuvent nécessiter 3-6 mois. Nous fournissons un calendrier détaillé après l'évaluation initiale de vos besoins.</p>
                 </div>
-                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover">
+                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Fournissez-vous un support et une maintenance continus?</h3>
                     <p class="text-gray-600 dark:text-gray-300">Oui, nous proposons des plans de support et de maintenance continus pour tous nos projets. Cela inclut les mises à jour, la correction de bugs, l'optimisation des performances et l'assistance technique selon vos besoins.</p>
                 </div>
-                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover">
+                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Pouvez-vous travailler avec des systèmes existants et des intégrations tierces?</h3>
                     <p class="text-gray-600 dark:text-gray-300">Absolument. Nous avons de l'expérience dans l'intégration avec divers systèmes, API et services tiers. Nous pouvons travailler avec votre infrastructure existante ou recommander de nouvelles solutions qui s'intègrent parfaitement.</p>
                 </div>
-                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover">
+                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Quelle est votre structure tarifaire?</h3>
                     <p class="text-gray-600 dark:text-gray-300">Nous proposons des modèles de tarification flexibles selon le projet : forfaitaire pour les projets bien définis, taux horaire pour les travaux continus, et modèles d'abonnement pour les services SaaS. Contactez-nous pour une estimation personnalisée.</p>
                 </div>
-                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover">
+                <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
                     <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Travaillez-vous avec des clients internationaux?</h3>
                     <p class="text-gray-600 dark:text-gray-300">Oui, nous servons des clients du monde entier. Notre équipe est répartie dans différents fuseaux horaires, ce qui nous permet de fournir un support quasi continu et de collaborer efficacement avec des clients internationaux.</p>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
+            <div class="text-center mt-12 animate__animated animate__fadeInUp">
                 <p class="text-xl mb-8 text-gray-900 dark:text-light">Vous ne trouvez pas la réponse que vous cherchez? Notre équipe est là pour vous aider.</p>
                 <a href="#contact" class="btn-primary">Contactez-nous</a>
             </div>
