@@ -52,6 +52,8 @@
             @apply flex flex-col items-center text-center p-6 bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl transition-all duration-300 hover:border-primary hover:shadow-lg;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 </head>
 <body class="bg-light dark:bg-dark text-gray-800 dark:text-light transition-colors duration-300">
     <!-- Navigation -->
@@ -94,69 +96,72 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-light">Innovating Digital Solutions for a <span class="text-primary">Global Future</span></h1>
-                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#services" class="btn-primary">Découvrir nos services</a>
-                        <a href="#contact" class="btn-outline">Nous contacter</a>
+    <!-- Hero and Stats Wrapper -->
+    <div id="hero-stats-wrapper" class="flex flex-col justify-center items-center">
+        <!-- Hero Section -->
+        <section id="hero-section" class="pb-20">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-light">Innovating Digital Solutions for a <span class="text-primary">Global Future</span></h1>
+                        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#services" class="btn-primary">Découvrir nos services</a>
+                            <a href="#contact" class="btn-outline">Nous contacter</a>
+                        </div>
                     </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight">
-                    <div class="relative">
-                        <div class="absolute -inset-8 bg-primary rounded-3xl rotate-6 opacity-20 animate-pulse-slow"></div>
-                        <div class="relative bg-gradient-to-br from-gray-100 to-light dark:from-gray-800 dark:to-dark border border-gray-200 dark:border-gray-700 rounded-3xl p-8 transform rotate-2">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                    <i class="fas fa-laptop-code text-4xl text-primary"></i>
-                                </div>
-                                <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                    <i class="fas fa-mobile-alt text-4xl text-primary"></i>
-                                </div>
-                                <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                    <i class="fas fa-cloud text-4xl text-primary"></i>
-                                </div>
-                                <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
-                                    <i class="fas fa-gamepad text-4xl text-primary"></i>
+                    <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight">
+                        <div class="relative">
+                            <div class="absolute -inset-8 bg-primary rounded-3xl rotate-6 opacity-20 animate-pulse-slow"></div>
+                            <div class="relative bg-gradient-to-br from-gray-100 to-light dark:from-gray-800 dark:to-dark border border-gray-200 dark:border-gray-700 rounded-3xl p-8 transform rotate-2">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
+                                        <i class="fas fa-laptop-code text-4xl text-primary"></i>
+                                    </div>
+                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
+                                        <i class="fas fa-mobile-alt text-4xl text-primary"></i>
+                                    </div>
+                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
+                                        <i class="fas fa-cloud text-4xl text-primary"></i>
+                                    </div>
+                                    <div class="bg-light dark:bg-dark rounded-2xl p-4 border border-gray-200 dark:border-gray-700 h-32 flex items-center justify-center">
+                                        <i class="fas fa-gamepad text-4xl text-primary"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="py-12 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="stats-card card-hover animate__animated animate__fadeInUp">
-                    <div class="text-4xl font-bold text-primary mb-2">2025</div>
-                    <div class="text-gray-600 dark:text-gray-400">Fondation</div>
-                </div>
-                <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                    <div class="text-4xl font-bold text-primary mb-2">4</div>
-                    <div class="text-gray-600 dark:text-gray-400">Services principaux</div>
-                </div>
-                <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                    <div class="text-4xl font-bold text-primary mb-2">100%</div>
-                    <div class="text-gray-600 dark:text-gray-400">Satisfaction client</div>
-                </div>
-                <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-                    <div class="text-4xl font-bold text-primary mb-2">24/7</div>
-                    <div class="text-gray-600 dark:text-gray-400">Support</div>
+        <!-- Stats Section -->
+        <section class="py-12 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="stats-card card-hover animate__animated animate__fadeInUp">
+                        <div class="text-4xl font-bold text-primary mb-2">2025</div>
+                        <div class="text-gray-600 dark:text-gray-400">Fondation</div>
+                    </div>
+                    <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                        <div class="text-4xl font-bold text-primary mb-2">4</div>
+                        <div class="text-gray-600 dark:text-gray-400">Services principaux</div>
+                    </div>
+                    <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                        <div class="text-4xl font-bold text-primary mb-2">100%</div>
+                        <div class="text-gray-600 dark:text-gray-400">Satisfaction client</div>
+                    </div>
+                    <div class="stats-card card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                        <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+                        <div class="text-gray-600 dark:text-gray-400">Support</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4">
+    <section id="about" class="py-20 bg-light dark:bg-dark">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">À propos de <span class="text-primary">SETTIS LLC</span></h2>
@@ -215,7 +220,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-100 dark:bg-gray-900 px-4">
+    <section id="services" class="py-20 bg-gray-100 dark:bg-gray-900">
         <div class="container mx-auto">
             <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Nos <span class="text-primary">Services</span></h2>
@@ -316,7 +321,7 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-20 px-4">
+    <section class="py-20 bg-light dark:bg-dark">
         <div class="container mx-auto">
             <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Notre <span class="text-primary">Processus</span> de Développement</h2>
@@ -349,7 +354,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-900 px-4">
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-900">
         <div class="container mx-auto">
             <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Contactez-<span class="text-primary">nous</span></h2>
@@ -422,7 +427,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20 px-4">
+    <section id="faq" class="py-20 bg-light dark:bg-dark">
         <div class="container mx-auto">
             <div class="text-center mb-16 animate__animated animate__fadeInUp">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-light">Questions <span class="text-primary">Fréquentes</span></h2>
@@ -563,22 +568,25 @@
         });
 
         // Smooth scrolling for anchor links
+        gsap.registerPlugin(ScrollToPlugin);
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                
+                if (targetId === '#') {
+                    gsap.to(window, {duration: 0.5, scrollTo: 0, ease: "power2.inOut"});
+                    return;
+                }
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
                     
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                    gsap.to(window, {duration: 0.5, scrollTo: {y: targetElement.offsetTop - 80}, ease: "power2.inOut"});
                 }
             });
         });
@@ -610,6 +618,16 @@
             // Initial check
             animateOnScroll();
         });
+
+        // Set hero and stats section height
+        const nav = document.querySelector('nav');
+        const heroStatsWrapper = document.getElementById('hero-stats-wrapper');
+
+        if (nav && heroStatsWrapper) {
+            const navHeight = nav.offsetHeight;
+            heroStatsWrapper.style.paddingTop = `${navHeight}px`;
+            heroStatsWrapper.style.minHeight = `calc(100vh - ${navHeight}px)`;
+        }
 
         // Listen for scroll events
         window.addEventListener('scroll', animateOnScroll);
