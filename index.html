@@ -9,12 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         dark: '#090A0A',
                         primary: '#F5831F',
                         light: '#FFFFFF',
+                        day: {
+                            light: '#F5F5F7',
+                            dark: '#2D3748',
+                            primary: '#F5831F'
+                        }
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -27,6 +33,7 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
         }
         .btn-primary {
             @apply bg-primary text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
@@ -38,76 +45,121 @@
             @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
         }
         .stats-card {
-            @apply bg-dark border border-gray-800 rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary;
+            @apply border rounded-2xl p-6 text-center transition-all duration-300;
         }
         .service-card {
-            @apply bg-dark border border-gray-800 rounded-2xl p-6 transition-all duration-300 hover:border-primary;
+            @apply border rounded-2xl p-6 transition-all duration-300;
         }
         .nav-link {
-            @apply text-gray-300 hover:text-primary transition-colors duration-300;
+            @apply transition-colors duration-300;
         }
         .process-step {
-            @apply flex flex-col items-center text-center p-6 bg-dark border border-gray-800 rounded-2xl transition-all duration-300 hover:border-primary;
+            @apply flex flex-col items-center text-center p-6 border rounded-2xl transition-all duration-300;
+        }
+        .theme-toggle {
+            @apply w-12 h-6 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full px-1 cursor-pointer transition-all duration-300;
+        }
+        .theme-toggle__circle {
+            @apply bg-white dark:bg-gray-900 w-4 h-4 rounded-full shadow-md transform transition-transform duration-300;
+        }
+        .day-mode {
+            background-color: #F5F5F7;
+            color: #2D3748;
+        }
+        .day-mode .bg-dark {
+            background-color: #FFFFFF;
+        }
+        .day-mode .text-light {
+            color: #2D3748;
+        }
+        .day-mode .border-gray-800 {
+            border-color: #E2E8F0;
+        }
+        .day-mode .bg-gray-900 {
+            background-color: #F8FAFC;
+        }
+        .day-mode .text-gray-300 {
+            color: #4A5568;
         }
     </style>
 </head>
 <body class="bg-dark text-light">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-dark bg-opacity-90 backdrop-blur-sm z-50 py-4 border-b border-gray-800">
+    <nav class="fixed w-full bg-dark bg-opacity-90 backdrop-blur-sm z-50 py-4 border-b border-gray-800 day-mode:bg-white day-mode:border-gray-200">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary">SETTIS<span class="text-light">LLC</span></a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#" class="nav-link">Accueil</a>
-                <a href="#about" class="nav-link">À propos</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="#faq" class="nav-link">FAQ</a>
+            <a href="#" class="text-2xl font-bold text-primary">SETTIS<span class="text-light day-mode:text-day-dark">LLC</span></a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#" class="nav-link text-gray-300 day-mode:text-day-dark hover:text-primary">Accueil</a>
+                <a href="#about" class="nav-link text-gray-300 day-mode:text-day-dark hover:text-primary">À propos</a>
+                <a href="#services" class="nav-link text-gray-300 day-mode:text-day-dark hover:text-primary">Services</a>
+                <a href="#contact" class="nav-link text-gray-300 day-mode:text-day-dark hover:text-primary">Contact</a>
+                <a href="#faq" class="nav-link text-gray-300 day-mode:text-day-dark hover:text-primary">FAQ</a>
+                
+                <!-- Theme Toggle -->
+                <div class="flex items-center ml-4">
+                    <i class="fas fa-sun text-yellow-400 mr-2 day-mode:block hidden"></i>
+                    <i class="fas fa-moon text-gray-300 mr-2 dark-mode:block hidden day-mode:hidden"></i>
+                    <div id="theme-toggle" class="theme-toggle">
+                        <div id="theme-toggle-circle" class="theme-toggle__circle"></div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="btn-primary ml-4">Commencer</a>
             </div>
-            <a href="#contact" class="btn-primary hidden md:block">Commencer</a>
-            <button class="md:hidden text-light" id="mobile-menu-button">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+            <div class="flex items-center md:hidden">
+                <div id="mobile-theme-toggle" class="theme-toggle mr-4">
+                    <div id="mobile-theme-toggle-circle" class="theme-toggle__circle"></div>
+                </div>
+                <button class="text-light day-mode:text-day-dark" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-dark border-t border-gray-800 py-4" id="mobile-menu">
+        <div class="hidden md:hidden bg-dark day-mode:bg-white border-t border-gray-800 day-mode:border-gray-200 py-4" id="mobile-menu">
             <div class="container mx-auto px-4 flex flex-col space-y-4">
-                <a href="#" class="nav-link py-2">Accueil</a>
-                <a href="#about" class="nav-link py-2">À propos</a>
-                <a href="#services" class="nav-link py-2">Services</a>
-                <a href="#contact" class="nav-link py-2">Contact</a>
-                <a href="#faq" class="nav-link py-2">FAQ</a>
+                <a href="#" class="nav-link py-2 text-gray-300 day-mode:text-day-dark hover:text-primary">Accueil</a>
+                <a href="#about" class="nav-link py-2 text-gray-300 day-mode:text-day-dark hover:text-primary">À propos</a>
+                <a href="#services" class="nav-link py-2 text-gray-300 day-mode:text-day-dark hover:text-primary">Services</a>
+                <a href="#contact" class="nav-link py-2 text-gray-300 day-mode:text-day-dark hover:text-primary">Contact</a>
+                <a href="#faq" class="nav-link py-2 text-gray-300 day-mode:text-day-dark hover:text-primary">FAQ</a>
+                <div class="flex items-center justify-center pt-4">
+                    <i class="fas fa-sun text-yellow-400 mr-2 day-mode:block hidden"></i>
+                    <i class="fas fa-moon text-gray-300 mr-2 dark-mode:block hidden day-mode:hidden"></i>
+                    <span class="text-gray-300 day-mode:text-day-dark">Mode jour/nuit</span>
+                </div>
                 <a href="#contact" class="btn-primary w-full text-center mt-4">Commencer</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4">
+    <section class="pt-32 pb-20 px-4 bg-dark day-mode:bg-day-light">
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Innovating Digital Solutions for a <span class="text-primary">Global Future</span></h1>
-                    <p class="text-xl text-gray-300 mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
+                    <p class="text-xl text-gray-300 day-mode:text-day-dark mb-8">Nous créons des expériences digitales exceptionnelles à travers le développement freelance, les solutions SaaS, les applications mobiles et le gaming PC.</p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                         <a href="#services" class="btn-primary">Découvrir nos services</a>
-                        <a href="#contact" class="btn-outline">Nous contacter</a>
+                        <a href="#contact" class="btn-outline day-mode:border-primary day-mode:text-primary day-mode:hover:bg-primary day-mode:hover:text-white">Nous contacter</a>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
                     <div class="relative">
                         <div class="absolute -inset-8 bg-primary rounded-3xl rotate-6 opacity-20 animate-pulse-slow"></div>
-                        <div class="relative bg-gradient-to-br from-gray-800 to-dark border border-gray-700 rounded-3xl p-8 transform rotate-2">
+                        <div class="relative bg-gradient-to-br from-gray-800 day-mode:from-gray-100 to-dark day-mode:to-white border border-gray-700 day-mode:border-gray-200 rounded-3xl p-8 transform rotate-2">
                             <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                <div class="bg-dark day-mode:bg-white rounded-2xl p-4 border border-gray-700 day-mode:border-gray-200 h-32 flex items-center justify-center">
                                     <i class="fas fa-laptop-code text-4xl text-primary"></i>
                                 </div>
-                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                <div class="bg-dark day-mode:bg-white rounded-2xl p-4 border border-gray-700 day-mode:border-gray-200 h-32 flex items-center justify-center">
                                     <i class="fas fa-mobile-alt text-4xl text-primary"></i>
                                 </div>
-                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                <div class="bg-dark day-mode:bg-white rounded-2xl p-4 border border-gray-700 day-mode:border-gray-200 h-32 flex items-center justify-center">
                                     <i class="fas fa-cloud text-4xl text-primary"></i>
                                 </div>
-                                <div class="bg-dark rounded-2xl p-4 border border-gray-700 h-32 flex items-center justify-center">
+                                <div class="bg-dark day-mode:bg-white rounded-2xl p-4 border border-gray-700 day-mode:border-gray-200 h-32 flex items-center justify-center">
                                     <i class="fas fa-gamepad text-4xl text-primary"></i>
                                 </div>
                             </div>
@@ -119,178 +171,178 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-12 bg-gray-900">
+    <section class="py-12 bg-gray-900 day-mode:bg-day-light">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="stats-card card-hover">
+                <div class="stats-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="text-4xl font-bold text-primary mb-2">2025</div>
-                    <div class="text-gray-400">Fondation</div>
+                    <div class="text-gray-300 day-mode:text-day-dark">Fondation</div>
                 </div>
-                <div class="stats-card card-hover">
+                <div class="stats-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="text-4xl font-bold text-primary mb-2">4</div>
-                    <div class="text-gray-400">Services principaux</div>
+                    <div class="text-gray-300 day-mode:text-day-dark">Services principaux</div>
                 </div>
-                <div class="stats-card card-hover">
+                <div class="stats-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="text-4xl font-bold text-primary mb-2">100%</div>
-                    <div class="text-gray-400">Satisfaction client</div>
+                    <div class="text-gray-300 day-mode:text-day-dark">Satisfaction client</div>
                 </div>
-                <div class="stats-card card-hover">
+                <div class="stats-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="text-4xl font-bold text-primary mb-2">24/7</div>
-                    <div class="text-gray-400">Support</div>
+                    <div class="text-gray-300 day-mode:text-day-dark">Support</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4">
+    <section id="about" class="py-20 px-4 bg-dark day-mode:bg-day-light">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">À propos de <span class="text-primary">SETTIS LLC</span></h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Fondée en 2025, SETTIS LLC est une entreprise technologique tournée vers l'avenir, dédiée à la création de solutions digitales innovantes qui comblent le fossé entre la technologie de pointe et les applications du monde réel.</p>
+                <p class="text-xl text-gray-300 day-mode:text-day-dark max-w-3xl mx-auto">Fondée en 2025, SETTIS LLC est une entreprise technologique tournée vers l'avenir, dédiée à la création de solutions digitales innovantes qui comblent le fossé entre la technologie de pointe et les applications du monde réel.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 mb-16">
                 <div>
                     <h3 class="text-2xl font-bold mb-6">Notre histoire</h3>
-                    <p class="text-gray-300 mb-6">SETTIS LLC est née d'une vision visant à démontrer l'accès à des solutions digitales de haute qualité. Fondée en 2025, notre entreprise a été construite sur le principe que la technologie innovante devrait être accessible aux entreprises de toutes tailles, des startups aux grandes entreprises.</p>
-                    <p class="text-gray-300">Notre équipe combine des années d'expérience dans le développement logiciel, les applications mobiles et l'innovation digitale. Nous nous spécialisons dans la création de solutions qui répondent non seulement aux besoins actuels, mais anticipent également les défis et opportunités futurs.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark mb-6">SETTIS LLC est née d'une vision visant à démontrer l'accès à des solutions digitales de haute qualité. Fondée en 2025, notre entreprise a été construite sur le principe que la technologie innovante devrait être accessible aux entreprises de toutes tailles, des startups aux grandes entreprises.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Notre équipe combine des années d'expérience dans le développement logiciel, les applications mobiles et l'innovation digitale. Nous nous spécialisons dans la création de solutions qui répondent non seulement aux besoins actuels, mais anticipent également les défis et opportunités futurs.</p>
                 </div>
-                <div class="bg-gray-800 rounded-3xl p-8 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-3xl p-8 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-2xl font-bold mb-6 text-primary">Nos valeurs fondamentales</h3>
                     <div class="space-y-6">
                         <div>
                             <h4 class="text-xl font-semibold mb-2">Innovation</h4>
-                            <p class="text-gray-300">Nous repoussons constamment les limites de la technologie pour créer des solutions de pointe qui stimulent le progrès et transforment les industries.</p>
+                            <p class="text-gray-300 day-mode:text-day-dark">Nous repoussons constamment les limites de la technologie pour créer des solutions de pointe qui stimulent le progrès et transforment les industries.</p>
                         </div>
                         <div>
                             <h4 class="text-xl font-semibold mb-2">Fiabilité</h4>
-                            <p class="text-gray-300">Notre engagement envers la qualité et la responsabilité garantit que chaque projet répond aux normes d'excellence les plus élevées.</p>
+                            <p class="text-gray-300 day-mode:text-day-dark">Notre engagement envers la qualité et la responsabilité garantit que chaque projet répond aux normes d'excellence les plus élevées.</p>
                         </div>
                         <div>
                             <h4 class="text-xl font-semibold mb-2">Accessibilité mondiale</h4>
-                            <p class="text-gray-300">Nous concevons des solutions avec une perspective globale, garantissant que les clients sont accessibles et précieux pour les utilisateurs du monde entier.</p>
+                            <p class="text-gray-300 day-mode:text-day-dark">Nous concevons des solutions avec une perspective globale, garantissant que les clients sont accessibles et précieux pour les utilisateurs du monde entier.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 rounded-3xl p-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-3xl p-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
-                        <i class="fas fa-building text-2xl"></i>
+                        <i class="fas fa-building text-2xl text-white"></i>
                     </div>
                     <h4 class="text-xl font-semibold mb-2">Fondation de l'entreprise</h4>
-                    <p class="text-gray-300">SETTIS LLC a été créée en tant que société à responsabilité limitée basée dans le Delaware, réunissant une équipe de développeurs et d'innovateurs expérimentés.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">SETTIS LLC a été créée en tant que société à responsabilité limitée basée dans le Delaware, réunissant une équipe de développeurs et d'innovateurs expérimentés.</p>
                 </div>
-                <div class="bg-gray-800 rounded-3xl p-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-3xl p-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
-                        <i class="fas fa-rocket text-2xl"></i>
+                        <i class="fas fa-rocket text-2xl text-white"></i>
                     </div>
                     <h4 class="text-xl font-semibold mb-2">Premier lancement de produit</h4>
-                    <p class="text-gray-300">Lancement réussi de CRIF, notre solution SaaS phare pour les pré-spécifications de cartes d'identité nationales en ligne, rationalisant les services gouvernementaux.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Lancement réussi de CRIF, notre solution SaaS phare pour les pré-spécifications de cartes d'identité nationales en ligne, rationalisant les services gouvernementaux.</p>
                 </div>
-                <div class="bg-gray-800 rounded-3xl p-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-3xl p-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
-                        <i class="fas fa-chart-line text-2xl"></i>
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
                     </div>
                     <h4 class="text-xl font-semibold mb-2">Expansion du marché</h4>
-                    <p class="text-gray-300">Élargissement de nos services pour inclure le développement d'applications mobiles et le gaming PC, établissant des partenariats avec les principales plateformes de distribution.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Élargissement de nos services pour inclure le développement d'applications mobiles et le gaming PC, établissant des partenariats avec les principales plateformes de distribution.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-900 px-4">
+    <section id="services" class="py-20 bg-gray-900 day-mode:bg-gray-100 px-4">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Nos <span class="text-primary">Services</span></h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Du développement freelance aux solutions SaaS d'entreprise, nous offrons des services numériques complets qui stimulent l'innovation et la croissance des entreprises.</p>
+                <p class="text-xl text-gray-300 day-mode:text-day-dark max-w-3xl mx-auto">Du développement freelance aux solutions SaaS d'entreprise, nous offrons des services numériques complets qui stimulent l'innovation et la croissance des entreprises.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <div class="service-card card-hover">
+                <div class="service-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-2xl"></i>
+                        <i class="fas fa-laptop-code text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Développement Freelance</h3>
-                    <p class="text-gray-300">Services de développement web et mobile sur mesure adaptés à vos besoins commerciaux spécifiques.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Services de développement web et mobile sur mesure adaptés à vos besoins commerciaux spécifiques.</p>
                     <ul class="mt-4 space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Applications Web Personnalisées</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Applications Web Personnalisées</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Solutions Sur Mesure</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Solutions Sur Mesure</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Intégrations API</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Intégrations API</span>
                         </li>
                     </ul>
                 </div>
-                <div class="service-card card-hover">
+                <div class="service-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-mobile-alt text-2xl"></i>
+                        <i class="fas fa-mobile-alt text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Applications Mobiles</h3>
-                    <p class="text-gray-300">Applications mobiles natives et multiplateformes pour les appareils iOS et Android.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Applications mobiles natives et multiplateformes pour les appareils iOS et Android.</p>
                     <ul class="mt-4 space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Développement iOS Natif</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Développement iOS Natif</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Développement Android Natif</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Développement Android Natif</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Solutions Cross-Platform</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Solutions Cross-Platform</span>
                         </li>
                     </ul>
                 </div>
-                <div class="service-card card-hover">
+                <div class="service-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-cloud text-2xl"></i>
+                        <i class="fas fa-cloud text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Solutions SaaS</h3>
-                    <p class="text-gray-300">Plateformes software-as-a-service évolutives conçues pour les opérations commerciales modernes.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Plateformes software-as-a-service évolutives conçues pour les opérations commerciales modernes.</p>
                     <ul class="mt-4 space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Architecture Microservices</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Architecture Microservices</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Intégration de Paiement</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Intégration de Paiement</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Développement d'API</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Développement d'API</span>
                         </li>
                     </ul>
                 </div>
-                <div class="service-card card-hover">
+                <div class="service-card bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
                     <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-gamepad text-2xl"></i>
+                        <i class="fas fa-gamepad text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Jeux PC</h3>
-                    <p class="text-gray-300">Jeux PC engageants développés pour Steam et d'autres grandes plateformes de gaming.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Jeux PC engageants développés pour Steam et d'autres grandes plateformes de gaming.</p>
                     <ul class="mt-4 space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Conception & Développement de Jeu</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Conception & Développement de Jeu</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Systèmes Multijoueurs</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Systèmes Multijoueurs</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-primary mr-2"></i>
-                            <span class="text-gray-300">Intégration SDK</span>
+                            <span class="text-gray-300 day-mode:text-day-dark">Intégration SDK</span>
                         </li>
                     </ul>
                 </div>
@@ -303,44 +355,44 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-20 px-4">
+    <section class="py-20 px-4 bg-dark day-mode:bg-day-light">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Notre <span class="text-primary">Processus</span> de Développement</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Nous suivons une méthodologie éprouvée pour garantir que votre projet est livré à temps, dans le budget et dépasse vos attentes.</p>
+                <p class="text-xl text-gray-300 day-mode:text-day-dark max-w-3xl mx-auto">Nous suivons une méthodologie éprouvée pour garantir que votre projet est livré à temps, dans le budget et dépasse vos attentes.</p>
             </div>
 
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="process-step card-hover">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">1</div>
+                <div class="process-step bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-white mb-6">1</div>
                     <h3 class="text-xl font-semibold mb-4">Consultation</h3>
-                    <p class="text-gray-300">Nous commençons par une consultation approfondie pour comprendre vos besoins et objectifs.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Nous commençons par une consultation approfondie pour comprendre vos besoins et objectifs.</p>
                 </div>
-                <div class="process-step card-hover">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">2</div>
+                <div class="process-step bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-white mb-6">2</div>
                     <h3 class="text-xl font-semibold mb-4">Développement</h3>
-                    <p class="text-gray-300">Notre équipe experte développe votre solution en utilisant les dernières technologies.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Notre équipe experte développe votre solution en utilisant les dernières technologies.</p>
                 </div>
-                <div class="process-step card-hover">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">3</div>
+                <div class="process-step bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-white mb-6">3</div>
                     <h3 class="text-xl font-semibold mb-4">Test</h3>
-                    <p class="text-gray-300">Des tests complets garantissent que votre solution est fiable, sécurisée et performante.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Des tests complets garantissent que votre solution est fiable, sécurisée et performante.</p>
                 </div>
-                <div class="process-step card-hover">
-                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6">4</div>
+                <div class="process-step bg-dark day-mode:bg-white border-gray-800 day-mode:border-gray-200 card-hover">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-white mb-6">4</div>
                     <h3 class="text-xl font-semibold mb-4">Déploiement</h3>
-                    <p class="text-gray-300">Nous gérons le processus de déploiement complet et fournissons une assistance continue.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Nous gérons le processus de déploiement complet et fournissons une assistance continue.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900 px-4">
+    <section id="contact" class="py-20 bg-gray-900 day-mode:bg-gray-100 px-4">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Contactez-<span class="text-primary">nous</span></h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Prêt à commencer votre prochain projet? Contactez notre équipe pour discuter de la façon dont nous pouvons vous aider à concrétiser votre vision digitale.</p>
+                <p class="text-xl text-gray-300 day-mode:text-day-dark max-w-3xl mx-auto">Prêt à commencer votre prochain projet? Contactez notre équipe pour discuter de la façon dont nous pouvons vous aider à concrétiser votre vision digitale.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12">
@@ -348,56 +400,56 @@
                     <form class="space-y-6">
                         <div>
                             <label for="name" class="block mb-2">Nom complet *</label>
-                            <input type="text" id="name" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre nom complet">
+                            <input type="text" id="name" class="w-full bg-dark day-mode:bg-white border border-gray-700 day-mode:border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre nom complet">
                         </div>
                         <div>
                             <label for="email" class="block mb-2">Email *</label>
-                            <input type="email" id="email" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="votre.email@exemple.com">
+                            <input type="email" id="email" class="w-full bg-dark day-mode:bg-white border border-gray-700 day-mode:border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="votre.email@exemple.com">
                         </div>
                         <div>
                             <label for="subject" class="block mb-2">Sujet *</label>
-                            <input type="text" id="subject" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="De quoi s'agit-il?">
+                            <input type="text" id="subject" class="w-full bg-dark day-mode:bg-white border border-gray-700 day-mode:border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="De quoi s'agit-il?">
                         </div>
                         <div>
                             <label for="message" class="block mb-2">Message *</label>
-                            <textarea id="message" rows="5" class="w-full bg-dark border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Parlez-nous de votre projet ou demande..."></textarea>
+                            <textarea id="message" rows="5" class="w-full bg-dark day-mode:bg-white border border-gray-700 day-mode:border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Parlez-nous de votre projet ou demande..."></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full">Envoyer le message</button>
                     </form>
                 </div>
                 <div>
-                    <div class="bg-dark border border-gray-700 rounded-2xl p-8">
+                    <div class="bg-dark day-mode:bg-white border border-gray-700 day-mode:border-gray-200 rounded-2xl p-8">
                         <h3 class="text-2xl font-semibold mb-6">Restons en contact</h3>
-                        <p class="text-gray-300 mb-8">Nous sommes là pour vous aider à réussir. Que vous ayez besoin d'une application web personnalisée, d'une application mobile ou de questions sur nos services, notre équipe est prête à vous aider.</p>
+                        <p class="text-gray-300 day-mode:text-day-dark mb-8">Nous sommes là pour vous aider à réussir. Que vous ayez besoin d'une application web personnalisée, d'une application mobile ou de questions sur nos services, notre équipe est prête à vous aider.</p>
                         
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope"></i>
+                                    <i class="fas fa-envelope text-white"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold mb-1">Email</h4>
-                                    <p class="text-gray-300">Envoyez-nous un email à tout moment</p>
+                                    <p class="text-gray-300 day-mode:text-day-dark">Envoyez-nous un email à tout moment</p>
                                     <p class="text-primary">contact@settisllc.com</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <i class="fas fa-map-marker-alt text-white"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold mb-1">Adresse</h4>
-                                    <p class="text-gray-300">Notre siège social</p>
+                                    <p class="text-gray-300 day-mode:text-day-dark">Notre siège social</p>
                                     <p class="text-primary">1234 Innovation Drive, Suite 567<br>Austin, TX 78701, États-Unis</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-4">
-                                    <i class="fas fa-clock"></i>
+                                    <i class="fas fa-clock text-white"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold mb-1">Heures d'ouverture</h4>
-                                    <p class="text-gray-300">Quand nous sommes disponibles</p>
+                                    <p class="text-gray-300 day-mode:text-day-dark">Quand nous sommes disponibles</p>
                                     <p class="text-primary">Lundi - Vendredi: 9h00 - 18h00 CST<br>Samedi: 10h00 - 14h00 CST</p>
                                 </div>
                             </div>
@@ -409,37 +461,37 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20 px-4">
+    <section id="faq" class="py-20 px-4 bg-dark day-mode:bg-day-light">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Questions <span class="text-primary">Fréquentes</span></h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Trouvez des réponses aux questions courantes sur nos services, nos processus et la façon dont nous pouvons vous aider à concrétiser vos projets digitaux.</p>
+                <p class="text-xl text-gray-300 day-mode:text-day-dark max-w-3xl mx-auto">Trouvez des réponses aux questions courantes sur nos services, nos processus et la façon dont nous pouvons vous aider à concrétiser vos projets digitaux.</p>
             </div>
 
             <div class="max-w-3xl mx-auto">
-                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-2xl p-6 mb-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-xl font-semibold mb-4">Quels types de projets SETTIS LLC propose-t-elle?</h3>
-                    <p class="text-gray-300">Nous proposons une large gamme de services incluant le développement web et mobile, les solutions SaaS d'entreprise, et le développement de jeux PC. Que vous ayez besoin d'une application personnalisée, d'une plateforme cloud ou d'un jeu, nous avons l'expertise nécessaire.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Nous proposons une large gamme de services incluant le développement web et mobile, les solutions SaaS d'entreprise, et le développement de jeux PC. Que vous ayez besoin d'une application personnalisée, d'une plateforme cloud ou d'un jeu, nous avons l'expertise nécessaire.</p>
                 </div>
-                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-2xl p-6 mb-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-xl font-semibold mb-4">Quel est le délai typique pour un projet?</h3>
-                    <p class="text-gray-300">Le délai dépend de la complexité et de la portée du projet. Les projets simples peuvent prendre 2-4 semaines, tandis que les projets plus complexes peuvent nécessiter 3-6 mois. Nous fournissons un calendrier détaillé après l'évaluation initiale de vos besoins.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Le délai dépend de la complexité et de la portée du projet. Les projets simples peuvent prendre 2-4 semaines, tandis que les projets plus complexes peuvent nécessiter 3-6 mois. Nous fournissons un calendrier détaillé après l'évaluation initiale de vos besoins.</p>
                 </div>
-                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-2xl p-6 mb-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-xl font-semibold mb-4">Fournissez-vous un support et une maintenance continus?</h3>
-                    <p class="text-gray-300">Oui, nous proposons des plans de support et de maintenance continus pour tous nos projets. Cela inclut les mises à jour, la correction de bugs, l'optimisation des performances et l'assistance technique selon vos besoins.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Oui, nous proposons des plans de support et de maintenance continus pour tous nos projets. Cela inclut les mises à jour, la correction de bugs, l'optimisation des performances et l'assistance technique selon vos besoins.</p>
                 </div>
-                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-2xl p-6 mb-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-xl font-semibold mb-4">Pouvez-vous travailler avec des systèmes existants et des intégrations tierces?</h3>
-                    <p class="text-gray-300">Absolument. Nous avons de l'expérience dans l'intégration avec divers systèmes, API et services tiers. Nous pouvons travailler avec votre infrastructure existante ou recommander de nouvelles solutions qui s'intègrent parfaitement.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Absolument. Nous avons de l'expérience dans l'intégration avec divers systèmes, API et services tiers. Nous pouvons travailler avec votre infrastructure existante ou recommander de nouvelles solutions qui s'intègrent parfaitement.</p>
                 </div>
-                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-2xl p-6 mb-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-xl font-semibold mb-4">Quelle est votre structure tarifaire?</h3>
-                    <p class="text-gray-300">Nous proposons des modèles de tarification flexibles selon le projet : forfaitaire pour les projets bien définis, taux horaire pour les travaux continus, et modèles d'abonnement pour les services SaaS. Contactez-nous pour une estimation personnalisée.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Nous proposons des modèles de tarification flexibles selon le projet : forfaitaire pour les projets bien définis, taux horaire pour les travaux continus, et modèles d'abonnement pour les services SaaS. Contactez-nous pour une estimation personnalisée.</p>
                 </div>
-                <div class="bg-gray-800 rounded-2xl p-6 mb-6 border border-gray-700 card-hover">
+                <div class="bg-gray-800 day-mode:bg-white rounded-2xl p-6 mb-6 border border-gray-700 day-mode:border-gray-200 card-hover">
                     <h3 class="text-xl font-semibold mb-4">Travaillez-vous avec des clients internationaux?</h3>
-                    <p class="text-gray-300">Oui, nous servons des clients du monde entier. Notre équipe est répartie dans différents fuseaux horaires, ce qui nous permet de fournir un support quasi continu et de collaborer efficacement avec des clients internationaux.</p>
+                    <p class="text-gray-300 day-mode:text-day-dark">Oui, nous servons des clients du monde entier. Notre équipe est répartie dans différents fuseaux horaires, ce qui nous permet de fournir un support quasi continu et de collaborer efficacement avec des clients internationaux.</p>
                 </div>
             </div>
 
@@ -451,58 +503,58 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12 px-4">
+    <footer class="bg-gray-900 day-mode:bg-gray-800 border-t border-gray-800 day-mode:border-gray-700 py-12 px-4">
         <div class="container mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <a href="#" class="text-2xl font-bold text-primary mb-4 block">SETTIS<span class="text-light">LLC</span></a>
-                    <p class="text-gray-300 mb-4">Innovating Digital Solutions for a Global Future. Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
+                    <a href="#" class="text-2xl font-bold text-primary mb-4 block">SETTIS<span class="text-light day-mode:text-gray-200">LLC</span></a>
+                    <p class="text-gray-300 day-mode:text-gray-300 mb-4">Innovating Digital Solutions for a Global Future. Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
                     <p class="text-primary">Email: contact@settisllc.com</p>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Entreprise</h4>
+                    <h4 class="text-lg font-semibold mb-4 text-light day-mode:text-gray-200">Entreprise</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Accueil</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-primary transition-colors">À propos</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-primary transition-colors">Services</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Accueil</a></li>
+                        <li><a href="#about" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">À propos</a></li>
+                        <li><a href="#services" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="#contact" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Légal & Support</h4>
+                    <h4 class="text-lg font-semibold mb-4 text-light day-mode:text-gray-200">Légal & Support</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Mentions légales</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Politique de confidentialité</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Conditions d'utilisation</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors">Politique de remboursement</a></li>
-                        <li><a href="#faq" class="text-gray-300 hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Mentions légales</a></li>
+                        <li><a href="#" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Conditions d'utilisation</a></li>
+                        <li><a href="#" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">Politique de remboursement</a></li>
+                        <li><a href="#faq" class="text-gray-300 day-mode:text-gray-400 hover:text-primary transition-colors">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Restez connecté</h4>
+                    <h4 class="text-lg font-semibold mb-4 text-light day-mode:text-gray-200">Restez connecté</h4>
                     <div class="flex space-x-4 mb-4">
-                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                        <a href="#" class="w-10 h-10 bg-dark day-mode:bg-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                        <a href="#" class="w-10 h-10 bg-dark day-mode:bg-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                        <a href="#" class="w-10 h-10 bg-dark day-mode:bg-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-dark rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                        <a href="#" class="w-10 h-10 bg-dark day-mode:bg-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors">
                             <i class="fab fa-discord"></i>
                         </a>
                     </div>
-                    <p class="text-gray-300">Abonnez-vous à notre newsletter pour les dernières mises à jour</p>
+                    <p class="text-gray-300 day-mode:text-gray-400">Abonnez-vous à notre newsletter pour les dernières mises à jour</p>
                     <div class="flex mt-2">
-                        <input type="email" placeholder="Votre email" class="bg-dark border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary w-full">
+                        <input type="email" placeholder="Votre email" class="bg-dark day-mode:bg-gray-700 border border-gray-700 day-mode:border-gray-600 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary w-full text-light">
                         <button class="bg-primary text-white px-4 rounded-r-lg">S'abonner</button>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-gray-300">© 2025 SETTIS LLC – Tous droits réservés.</p>
+            <div class="border-t border-gray-800 day-mode:border-gray-700 pt-8 text-center">
+                <p class="text-gray-300 day-mode:text-gray-400">© 2025 SETTIS LLC – Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -513,6 +565,37 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const themeToggleCircle = document.getElementById('theme-toggle-circle');
+        const mobileThemeToggleCircle = document.getElementById('mobile-theme-toggle-circle');
+        
+        // Check for saved theme preference or respect OS preference
+        if (localStorage.getItem('theme') === 'day' || 
+            (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
+            document.body.classList.add('day-mode');
+            themeToggleCircle.classList.add('translate-x-6');
+            mobileThemeToggleCircle.classList.add('translate-x-6');
+        }
+        
+        // Theme toggle event
+        function toggleTheme() {
+            document.body.classList.toggle('day-mode');
+            if (document.body.classList.contains('day-mode')) {
+                localStorage.setItem('theme', 'day');
+                themeToggleCircle.classList.add('translate-x-6');
+                mobileThemeToggleCircle.classList.add('translate-x-6');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggleCircle.classList.remove('translate-x-6');
+                mobileThemeToggleCircle.classList.remove('translate-x-6');
+            }
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
