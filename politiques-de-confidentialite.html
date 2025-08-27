@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité - SETTIS LLC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#090A0A',
+                        primary: '#F5831F',
+                        light: '#FFFFFF',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .btn-primary {
+            @apply bg-gradient-to-r from-primary to-orange-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 transform shadow-md;
+        }
+        .btn-outline {
+            @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg;
+        }
+        .card-hover {
+            @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+        }
+        .stats-card {
+            @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 text-center transition-all duration-300 hover:border-primary hover:shadow-lg;
+        }
+        .service-card {
+            @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 transition-all duration-300 hover:border-primary hover:shadow-lg;
+        }
+        .nav-link {
+            @apply text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium;
+        }
+                .process-step {
+            @apply flex flex-col items-center text-center p-6 bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl transition-all duration-300 hover:border-primary hover:shadow-lg;
+        }
+    </style>
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+</head>
+<body class="bg-light dark:bg-dark text-gray-800 dark:text-light transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-light/80 dark:bg-dark/80 backdrop-blur-sm z-50 py-4 border-b border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="./logo-for-whiteTheme.png" alt="Settis Logo" class="h-8 dark:hidden">
+                <img src="./logo-for-blackTheme.png" alt="Settis Logo" class="h-8 hidden dark:inline">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html#hero-section" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium">Accueil</a>
+                <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium">À propos</a>
+                <a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium">Services</a>
+                <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium">Contact</a>
+                <a href="index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium">FAQ</a>
+                
+                <button id="theme-toggle" class="ml-4 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                    <i class="fas fa-sun text-xl"></i>
+                </button>
+            </div>
+            <div class="flex items-center md:hidden">
+                <button id="theme-toggle-mobile" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors mr-4">
+                    <i class="fas fa-sun text-xl"></i>
+                </button>
+                <button class="text-light dark:text-light" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-light dark:bg-dark border-t border-gray-200 dark:border-gray-800 py-4" id="mobile-menu">
+            <div class="container mx-auto px-4 flex flex-col space-y-4">
+                <a href="index.html#hero-section" class="nav-link py-2">Accueil</a>
+                <a href="index.html#about" class="nav-link py-2">À propos</a>
+                <a href="index.html#services" class="nav-link py-2">Services</a>
+                <a href="index.html#contact" class="nav-link py-2">Contact</a>
+                <a href="index.html#faq" class="nav-link py-2">FAQ</a>
+                <a href="index.html#contact" class="btn-primary w-full text-center mt-4">Commencer</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-24 pt-40">
+  <h1 class="text-4xl font-bold mb-8">Politique de Confidentialité</h1>
+  <div class="space-y-8 leading-relaxed text-gray-700 dark:text-gray-300">
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">1. Introduction</h2>
+      <p>Chez <strong>SETTIS LLC</strong>, la protection de vos données personnelles est une priorité. Cette politique de confidentialité décrit les types d’informations que nous collectons, comment elles sont utilisées et vos droits en matière de protection des données.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">2. Données collectées</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Données personnelles</strong> : nom, adresse email, informations de contact.</li>
+        <li><strong>Données techniques</strong> : adresse IP, type de navigateur, système d’exploitation.</li>
+        <li><strong>Données liées à l’utilisation</strong> : interactions avec nos sites, applications et services.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">3. Utilisation des données</h2>
+      <p>Les données collectées peuvent être utilisées pour :</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Fournir et améliorer nos services (SaaS, applications, jeux).</li>
+        <li>Répondre aux demandes et fournir une assistance client.</li>
+        <li>Assurer la sécurité et prévenir les fraudes.</li>
+        <li>Envoyer des communications promotionnelles (avec consentement préalable).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">4. Partage des données</h2>
+      <p>Vos informations personnelles ne sont <strong>jamais vendues</strong>. Elles peuvent être partagées uniquement avec :</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Nos partenaires techniques (hébergement, paiements sécurisés via Stripe, etc.).</li>
+        <li>Les autorités légales, uniquement en cas d’obligation légale.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">5. Conservation des données</h2>
+      <p>Les données sont conservées uniquement le temps nécessaire à la réalisation des finalités pour lesquelles elles ont été collectées, sauf obligation légale contraire.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">6. Vos droits</h2>
+      <p>Conformément au <strong>RGPD</strong> (Union Européenne) et au <strong>CCPA</strong> (Californie), vous disposez des droits suivants :</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Accéder à vos données personnelles.</li>
+        <li>Demander la rectification ou la suppression de vos données.</li>
+        <li>Limiter ou refuser certains traitements.</li>
+        <li>Demander la portabilité de vos données.</li>
+      </ul>
+      <p>Pour exercer vos droits, contactez-nous à : <strong>contact@settisllc.com</strong>.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">7. Sécurité des données</h2>
+      <p>Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles (cryptage SSL, serveurs sécurisés, sauvegardes) pour protéger vos données contre l’accès non autorisé, la perte ou l’altération.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">8. Modifications</h2>
+      <p>Cette politique peut être mise à jour périodiquement. Toute modification sera publiée sur cette page avec la date de mise à jour.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">9. Contact</h2>
+      <p>Pour toute question relative à la protection de vos données, vous pouvez nous contacter à : <strong>contact@settisllc.com</strong>.</p>
+    </section>
+
+  </div>
+</main>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="index.html" class="flex items-center mb-4">
+                        <img src="./logo-for-whiteTheme.png" alt="Settis Logo" class="h-8 dark:hidden">
+                        <img src="./logo-for-blackTheme.png" alt="Settis Logo" class="h-8 hidden dark:inline">
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Innovating Digital Solutions for a Global Future. Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
+                    <p class="text-primary">Email: contact@settisllc.com</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-light">Entreprise</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Accueil</a></li>
+                        <li><a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">À propos</a></li>
+                        <li><a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-light">Légal & Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="mentions-legales.html" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Mentions légales</a></li>
+                        <li><a href="politiques-de-confidentialite.html" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="conditions-d-utilisations.html" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Conditions d'utilisation</a></li>
+                        <li><a href="politique-de-remboursement.html" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Politique de remboursement</a></li>
+                        <li><a href="index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-light">Restez connecté</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-light dark:bg-dark rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-light dark:bg-dark rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-light dark:bg-dark rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-light dark:bg-dark rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">Abonnez-vous à notre newsletter pour les dernières mises à jour</p>
+                    <div class="flex mt-2">
+                        <input type="email" placeholder="Votre email" class="bg-light dark:bg-dark border border-gray-300 dark:border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary w-full text-gray-900 dark:text-light">
+                        <button class="bg-primary text-white px-4 rounded-r-lg">S'abonner</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 text-center">
+                <p class="text-gray-600 dark:text-gray-300">© 2025 SETTIS LLC – Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggleButtons = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+        const sunIcon = `<i class="fas fa-sun text-xl"></i>`;
+        const moonIcon = `<i class="fas fa-moon text-xl"></i>`;
+
+        const setTheme = (isDark) => {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeToggleButtons.forEach(btn => btn.innerHTML = moonIcon);
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleButtons.forEach(btn => btn.innerHTML = sunIcon);
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme) {
+            setTheme(savedTheme === 'dark');
+        } else {
+            setTheme(prefersDark);
+        }
+
+        themeToggleButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTheme(!document.documentElement.classList.contains('dark'));
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
