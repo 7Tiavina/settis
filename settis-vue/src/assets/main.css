@@ -28,49 +28,16 @@ nav .container {
   align-items: center;
 }
 
-/* Texte général */
-body, #app {
-  font-size: 18px; /* taille de base plus grande */
-  line-height: 1.6; /* espace entre lignes pour plus de lisibilité */
-}
-
-/* Titres */
-h1 {
-  font-size: 7rem; 
-}
-
-h2 {
-  font-size: 2.5rem; /* 40px environ */
-}
-
-h3 {
-  font-size: 2rem; /* 32px environ */
-}
-
-h4 {
-  font-size: 1.75rem; /* 28px environ */
-}
-
-h5 {
-  font-size: 1.5rem; /* 24px environ */
-}
-
-h6 {
-  font-size: 1.25rem; /* 20px environ */
-}
-
-/* Paragraphes */
-p {
-  font-size: 1.125rem; /* 18px */
-}
-
 /* Boutons */
 .btn-primary {
-  font-size: 1.125rem; /* 18px */
-  padding: 0.85rem 1.75rem; /* augmente légèrement le padding */
+  @apply bg-gradient-to-r from-primary to-orange-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 transform shadow-md;
 }
 
+.btn-outline {
+  @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg;
+}
 /* Sections avec texte centré */
 .content-wrapper {
   font-size: 1rem; /* 16px de base, sera écrasé si h1/h2/p sont utilisés */
 }
+
