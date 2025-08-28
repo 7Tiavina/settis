@@ -41,3 +41,8 @@ nav .container {
   font-size: 1rem; /* 16px de base, sera écrasé si h1/h2/p sont utilisés */
 }
 
+
+:root {
+  --bg-dark: #0a0a0a; /* couleur que tu veux */
+}
+

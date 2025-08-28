@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { useGsapAnimations } from '@/composables/useGsapAnimations'
+import { useTheme } from '@/composables/useTheme'
 
 const { scrollToSection } = useGsapAnimations()
+const { isDarkMode } = useTheme()
 </script>
 
 <template>
   <div id="hero-wrapper" class="relative flex flex-col justify-center items-center w-full h-screen overflow-hidden">
+    <!-- Élément d'arrière-plan dédié -->
+    <div class="absolute inset-0 bg-white dark:bg-[var(--bg-dark)] z-0"></div>
+
     <!-- Background Lottie -->
-    <div id="hero-lottie" class="absolute top-0 right-0 -z-10 w-1/2 h-full">
+    <div id="hero-lottie" class="absolute top-0 right-0 z-10 w-1/2 h-full">
       <lottie-player 
         src="/2vmtMjmlm2.json" 
         background="transparent" 
@@ -19,12 +24,12 @@ const { scrollToSection } = useGsapAnimations()
     </div>
 
     <!-- Hero Section -->
-    <section id="hero-section" class="w-full flex flex-col justify-center items-center px-6">
+    <section id="hero-section" class="relative z-20 w-full flex flex-col justify-center items-center px-6">
       <div>
         <div class="flex flex-col md:flex-row items-center justify-between">
           <!-- Texte Hero aligné à gauche -->
           <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInDown text-left">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-light">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
               Innovating Digital Solutions for a <span class="text-primary">Global Future</span>
             </h1>
             <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">

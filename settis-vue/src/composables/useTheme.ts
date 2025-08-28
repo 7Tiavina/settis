@@ -1,6 +1,18 @@
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 
 const isDarkMode = ref(false)
+
+watchEffect(() => {
+  if (typeof document !== 'undefined') {
+    if (isDarkMode.value) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  }
+});
 
 export function useTheme() {
   const toggleTheme = () => {
