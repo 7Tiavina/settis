@@ -1,5 +1,4 @@
 @import './base.css';
-@import 'animate.css/animate.min.css';
 
 #app {
   max-width: 100%;
@@ -38,32 +37,40 @@ a,
 body {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
+/* Classes utilitaires personnalisées */
 .btn-primary {
-  @apply bg-gradient-to-r from-primary to-orange-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 transform shadow-md;
+  background: linear-gradient(to right, #F5831F, #f97316);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-outline {
-  @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg;
+.btn-primary:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
 .card-hover {
-  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  transition: all 0.3s ease;
 }
 
-.stats-card {
-  @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 text-center transition-all duration-300 hover:border-primary hover:shadow-lg;
+.card-hover:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
 }
 
-.service-card {
-  @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 transition-all duration-300 hover:border-primary hover:shadow-lg;
-}
-
-.nav-link {
-  @apply text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium;
-}
-
-.process-step {
-  @apply flex flex-col items-center text-center p-6 bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl transition-all duration-300 hover:border-primary hover:shadow-lg;
+/* Supprimer les styles problématiques */
+.container {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
 }

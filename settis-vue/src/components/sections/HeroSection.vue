@@ -1,21 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useGsapAnimations } from '@/composables/useGsapAnimations'
 
-const router = useRouter()
-
-const scrollToSection = (sectionId: string) => {
-  router.push({ hash: sectionId })
-  
-  // Attendre un peu pour que la navigation soit terminée
-  setTimeout(() => {
-    const element = document.querySelector(sectionId)
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 80
-      window.scrollTo({ top: offsetTop, behavior: 'smooth' })
-    }
-  }, 100)
-}
+const { scrollToSection } = useGsapAnimations()
 
 onMounted(() => {
   // Ajuster la hauteur du hero wrapper pour tenir compte de la navigation
@@ -46,7 +33,7 @@ onMounted(() => {
 
     <!-- Hero Section -->
     <section id="hero-section" class="w-full flex flex-col justify-center items-center px-6">
-      <div>
+      <div class="w-full max-w-7xl">
         <div class="flex flex-col md:flex-row items-center justify-between">
           <!-- Texte Hero aligné à gauche -->
           <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInDown text-left">

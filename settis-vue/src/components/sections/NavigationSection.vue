@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { useRouter } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
 import { useGsapAnimations } from '@/composables/useGsapAnimations'
 
-const router = useRouter()
 const isMenuOpen = ref(false)
 const { isDarkMode, toggleTheme } = useTheme()
 const { scrollToSection } = useGsapAnimations()
@@ -73,7 +71,7 @@ onBeforeUnmount(() => {
         <a href="#" @click.prevent="scrollToSection('#services')" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium py-2">Services</a>
         <a href="#" @click.prevent="scrollToSection('#contact')" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium py-2">Contact</a>
         <a href="#" @click.prevent="scrollToSection('#faq')" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium py-2">FAQ</a>
-        <button @click="scrollToSection('#contact')" class="btn-primary w-full text-center mt-4">Commencer</button>
+        <a href="#" @click.prevent="scrollToSection('#contact')" class="btn-primary w-full text-center mt-4">Commencer</a>
       </div>
     </div>
   </nav>

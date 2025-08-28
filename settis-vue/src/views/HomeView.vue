@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="home">
+  <div class="home w-full max-w-full overflow-x-hidden">
     <NavigationSection />
     <HeroSection />
     <AboutSection />
@@ -32,5 +32,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Nous ajouterons ici les styles spécifiques à la page d'accueil si nécessaire */
+.home {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 </style>

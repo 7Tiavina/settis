@@ -7,8 +7,10 @@ export function useTheme() {
     isDarkMode.value = !isDarkMode.value
     if (isDarkMode.value) {
       document.documentElement.classList.add('dark')
+      document.documentElement.classList.remove('light')
       localStorage.setItem('theme', 'dark')
     } else {
+      document.documentElement.classList.add('light')
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
     }
@@ -26,6 +28,10 @@ export function useTheme() {
     
     if (isDarkMode.value) {
       document.documentElement.classList.add('dark')
+      document.documentElement.classList.remove('light')
+    } else {
+      document.documentElement.classList.add('light')
+      document.documentElement.classList.remove('dark')
     }
   }
   
