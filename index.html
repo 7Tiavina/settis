@@ -307,7 +307,9 @@
             </div>
 
             <div class="text-center">
-                <a href="#contact" class="btn-primary">Démarrer votre projet</a>
+                <button onclick="window.location.href='#contact'" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2">
+                    <span class="relative">Démarrer votre projet</span>
+                </button>
             </div>
         </div>
     </section>
@@ -372,7 +374,7 @@
                             <label for="message" class="block mb-2 text-gray-900 dark:text-light">Message *</label>
                             <textarea id="message" rows="5" class="w-full bg-light dark:bg-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Parlez-nous de votre projet ou demande..."></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-full">Envoyer le message</button>
+                        <button type="submit" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2 mt-4">Envoyer le message</button>
                     </form>
                 </div>
                 <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
@@ -588,11 +590,12 @@
             const elements = document.querySelectorAll('.animate__animated');
             
             elements.forEach(element => {
-                // Vérifier si l'élément est dans la section FAQ
+                // Vérifier si l'élément est dans la section FAQ ou Contact
                 const isInFAQ = element.closest('#faq');
+                const isInContact = element.closest('#contact');
                 
-                // Ne pas animer les éléments de la section FAQ
-                if (isInFAQ) {
+                // Ne pas animer les éléments des sections FAQ et Contact
+                if (isInFAQ || isInContact) {
                     return;
                 }
                 
@@ -656,14 +659,15 @@
                 }
             });
             
-            // Gérer les éléments personnalisés (card-hover, process-step, etc.) - sauf ceux dans la section FAQ
+            // Gérer les éléments personnalisés (card-hover, process-step, etc.) - sauf ceux dans les sections FAQ et Contact
             const customElements = document.querySelectorAll('.card-hover, .process-step, .service-card, .stats-card');
             customElements.forEach(element => {
-                // Vérifier si l'élément est dans la section FAQ
+                // Vérifier si l'élément est dans les sections FAQ ou Contact
                 const isInFAQ = element.closest('#faq');
+                const isInContact = element.closest('#contact');
                 
-                // Ne pas animer les éléments de la section FAQ
-                if (isInFAQ) {
+                // Ne pas animer les éléments des sections FAQ et Contact
+                if (isInFAQ || isInContact) {
                     return;
                 }
                 
@@ -685,11 +689,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const customElements = document.querySelectorAll('.card-hover, .process-step, .service-card, .stats-card');
             customElements.forEach(element => {
-                // Vérifier si l'élément est dans la section FAQ
+                // Vérifier si l'élément est dans les sections FAQ ou Contact
                 const isInFAQ = element.closest('#faq');
+                const isInContact = element.closest('#contact');
                 
-                // Ne pas animer les éléments de la section FAQ
-                if (!isInFAQ) {
+                // Ne pas animer les éléments des sections FAQ et Contact
+                if (!isInFAQ && !isInContact) {
                     element.classList.add('opacity-0');
                     element.classList.add('transition-opacity');
                     element.classList.add('duration-700');
