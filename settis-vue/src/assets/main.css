@@ -1,76 +1,76 @@
-@import './base.css';
-
-#app {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
+/* Conteneur général centré pour le contenu */
+.content-wrapper {
+  max-width: 1200px; /* largeur max du texte / contenu */
+  margin: 0 auto; /* centre le contenu horizontalement */
+  padding: 0 1rem; /* espace léger sur mobile */
+  box-sizing: border-box;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: block;
-    place-items: center;
-  }
-
-  #app {
-    display: block;
-    padding: 0;
-  }
-}
-
-/* Styles globaux de votre site */
-body {
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
+/* Sections avec background plein écran */
+.full-width-section {
   width: 100%;
-  overflow-x: hidden;
+  padding: 4rem 1rem; /* espace interne pour que le texte ne touche pas les bords */
+  box-sizing: border-box;
 }
 
-/* Classes utilitaires personnalisées */
+/* Exemple : texte centré dans sections */
+.full-width-section .content-wrapper {
+  text-align: center; /* optionnel, centre le texte */
+}
+
+/* Pour le nav */
+nav .container {
+  max-width: 1200px; /* centre le nav comme le reste du contenu */
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Texte général */
+body, #app {
+  font-size: 18px; /* taille de base plus grande */
+  line-height: 1.6; /* espace entre lignes pour plus de lisibilité */
+}
+
+/* Titres */
+h1 {
+  font-size: 7rem; 
+}
+
+h2 {
+  font-size: 2.5rem; /* 40px environ */
+}
+
+h3 {
+  font-size: 2rem; /* 32px environ */
+}
+
+h4 {
+  font-size: 1.75rem; /* 28px environ */
+}
+
+h5 {
+  font-size: 1.5rem; /* 24px environ */
+}
+
+h6 {
+  font-size: 1.25rem; /* 20px environ */
+}
+
+/* Paragraphes */
+p {
+  font-size: 1.125rem; /* 18px */
+}
+
+/* Boutons */
 .btn-primary {
-  background: linear-gradient(to right, #F5831F, #f97316);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.125rem; /* 18px */
+  padding: 0.85rem 1.75rem; /* augmente légèrement le padding */
 }
 
-.btn-primary:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Supprimer les styles problématiques */
-.container {
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
+/* Sections avec texte centré */
+.content-wrapper {
+  font-size: 1rem; /* 16px de base, sera écrasé si h1/h2/p sont utilisés */
 }

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-// Aucune logique spécifique nécessaire pour le moment
+import { useGsapAnimations } from '@/composables/useGsapAnimations'
+
+const { scrollToSection } = useGsapAnimations()
 </script>
 
 <template>
@@ -98,14 +100,10 @@
       </div>
 
       <div class="text-center">
-        <button @click="$router.push('#contact')" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2">
+        <button @click="scrollToSection('#contact')" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2">
           <span class="relative">Démarrer votre projet</span>
         </button>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Nous ajouterons ici les styles spécifiques si nécessaire */
-</style>

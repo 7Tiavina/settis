@@ -1,20 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useGsapAnimations } from '@/composables/useGsapAnimations'
 
 const { scrollToSection } = useGsapAnimations()
-
-onMounted(() => {
-  // Ajuster la hauteur du hero wrapper pour tenir compte de la navigation
-  const nav = document.querySelector('nav')
-  const heroWrapper = document.getElementById('hero-wrapper')
-  
-  if (nav && heroWrapper) {
-    const navHeight = nav.offsetHeight
-    heroWrapper.style.paddingTop = `${navHeight}px`
-    heroWrapper.style.minHeight = `calc(100vh)`
-  }
-})
 </script>
 
 <template>
@@ -33,7 +20,7 @@ onMounted(() => {
 
     <!-- Hero Section -->
     <section id="hero-section" class="w-full flex flex-col justify-center items-center px-6">
-      <div class="w-full max-w-7xl">
+      <div>
         <div class="flex flex-col md:flex-row items-center justify-between">
           <!-- Texte Hero aligné à gauche -->
           <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInDown text-left">
@@ -48,7 +35,7 @@ onMounted(() => {
               <button @click="scrollToSection('#services')" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2">
                 <span class="relative">Découvrir nos services</span>
               </button>
-              <button id="hero-contact-button" @click="scrollToSection('#contact')" class="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-primary font-semibold text-white transition-all duration-300 hover:w-48">
+              <button @click="scrollToSection('#contact')" class="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-primary font-semibold text-white transition-all duration-300 hover:w-48">
                 <div class="inline-flex whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-x-3 group-hover:opacity-100">Nous contacter</div>
                 <div class="absolute right-3.5 opacity-100 transition-all duration-200">
                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -63,7 +50,3 @@ onMounted(() => {
     </section>
   </div>
 </template>
-
-<style scoped>
-/* Nous ajouterons ici les styles spécifiques si nécessaire */
-</style>

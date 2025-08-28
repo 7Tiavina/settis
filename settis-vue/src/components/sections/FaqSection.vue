@@ -1,5 +1,7 @@
 <script setup lang="ts">
-// Aucune logique spécifique nécessaire pour le moment
+import { useGsapAnimations } from '@/composables/useGsapAnimations'
+
+const { scrollToSection } = useGsapAnimations()
 </script>
 
 <template>
@@ -39,14 +41,8 @@
 
       <div class="text-center mt-12 animate__animated animate__fadeInUp">
         <p class="text-xl mb-8 text-gray-900 dark:text-light">Vous ne trouvez pas la réponse que vous cherchez? Notre équipe est là pour vous aider.</p>
-        <button @click="$router.push('#contact')" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2">
-          <span class="relative">Contactez-nous</span>
-        </button>
+        <a href="#contact" @click.prevent="scrollToSection('#contact')" class="btn-primary">Contactez-nous</a>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Nous ajouterons ici les styles spécifiques si nécessaire */
-</style>

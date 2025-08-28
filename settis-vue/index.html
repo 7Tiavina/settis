@@ -27,6 +27,33 @@
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .btn-primary {
+            @apply bg-gradient-to-r from-primary to-orange-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 transform shadow-md;
+        }
+        .btn-outline {
+            @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg;
+        }
+        .card-hover {
+            @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+        }
+        .stats-card {
+            @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 text-center transition-all duration-300 hover:border-primary hover:shadow-lg;
+        }
+        .service-card {
+            @apply bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl p-6 transition-all duration-300 hover:border-primary hover:shadow-lg;
+        }
+        .nav-link {
+            @apply text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 font-medium;
+        }
+        .process-step {
+            @apply flex flex-col items-center text-center p-6 bg-light dark:bg-dark border border-gray-200 dark:border-gray-800 rounded-3xl transition-all duration-300 hover:border-primary hover:shadow-lg;
+        }
+    </style>
   </head>
   <body>
     <div id="app"></div>
