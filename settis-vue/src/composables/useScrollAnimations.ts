@@ -62,7 +62,7 @@ export function useScrollAnimations() {
           animationClasses.forEach(cls => element.classList.remove(cls))
           
           // Forcer un reflow
-          void element.offsetWidth
+          void (element as HTMLElement).offsetWidth
           
           // Réajouter les classes d'animation avec la nouvelle animation
           element.classList.add('animate__animated')

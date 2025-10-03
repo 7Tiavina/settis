@@ -3,7 +3,7 @@ import gsap from 'gsap'
 
 export function useGsapAnimations() {
   const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId)
+    const element = document.querySelector(sectionId) as HTMLElement
     if (element) {
       gsap.to(window, {
         duration: 0.5,
@@ -21,28 +21,31 @@ export function useGsapAnimations() {
       anchor.addEventListener('click', function (e) {
         e.preventDefault()
         
-        const targetId = this.getAttribute('href')
+        const target = e.currentTarget as HTMLAnchorElement;
+        const targetId = target.getAttribute('href')
         
         if (targetId === '#') {
           gsap.to(window, { duration: 0.5, scrollTo: 0, ease: 'power2.inOut' })
           return
         }
         
-        const targetElement = document.querySelector(targetId)
-        if (targetElement) {
-          // Close mobile menu if open
-          const menu = document.getElementById('mobile-menu')
-          if (menu) {
-            menu.classList.add('hidden')
+        if (targetId) {
+          const targetElement = document.querySelector(targetId) as HTMLElement
+          if (targetElement) {
+            // Close mobile menu if open
+            const menu = document.getElementById('mobile-menu')
+            if (menu) {
+              menu.classList.add('hidden')
+            }
+            
+            gsap.to(window, {
+              duration: 0.5,
+              scrollTo: {
+                y: targetElement.offsetTop - 80
+              },
+              ease: 'power2.inOut'
+            })
           }
-          
-          gsap.to(window, {
-            duration: 0.5,
-            scrollTo: {
-              y: targetElement.offsetTop - 80
-            },
-            ease: 'power2.inOut'
-          })
         }
       })
     })

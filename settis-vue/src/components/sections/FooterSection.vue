@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useGsapAnimations } from '@/composables/useGsapAnimations'
+import { useSectionNavigation } from '@/composables/useSectionNavigation'
 
-const { scrollToSection } = useGsapAnimations()
+const { navigateToSection } = useSectionNavigation()
 const email = ref('')
 
 const subscribe = () => {
@@ -19,30 +19,30 @@ const subscribe = () => {
     <div class="container mx-auto">
       <div class="grid md:grid-cols-4 gap-8 mb-8">
         <div>
-          <a href="#" @click.prevent="scrollToSection('#hero-section')" class="flex items-center mb-4">
+          <a href="#" @click.prevent="navigateToSection('#hero-section')" class="flex items-center mb-4">
             <img src="/logo-for-whiteTheme.png" alt="Settis Logo" class="h-8 dark:hidden">
             <img src="/logo-for-blackTheme.png" alt="Settis Logo" class="h-8 hidden dark:inline">
           </a>
           <p class="text-lg text-gray-600 dark:text-gray-300 mb-4">Innovating Digital Solutions for a Global Future. Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
-          <p class="text-primary text-lg">Email: contact@settisllc.com</p>
+          <p class="text-primary text-lg">Email: contact@settis-llc.com</p>
         </div>
         <div>
           <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Entreprise</h4>
           <ul class="space-y-2">
-            <li><a href="#" @click.prevent="scrollToSection('#hero-section')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Accueil</a></li>
-            <li><a href="#about" @click.prevent="scrollToSection('#about')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">À propos</a></li>
-            <li><a href="#services" @click.prevent="scrollToSection('#services')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Services</a></li>
-            <li><a href="#contact" @click.prevent="scrollToSection('#contact')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+            <li><a href="#" @click.prevent="navigateToSection('#hero-section')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Accueil</a></li>
+            <li><a href="#about" @click.prevent="navigateToSection('#about')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">À propos</a></li>
+            <li><a href="#services" @click.prevent="navigateToSection('#services')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Services</a></li>
+            <li><a href="#contact" @click.prevent="navigateToSection('#contact')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-light">Légal & Support</h4>
           <ul class="space-y-2">
-            <li><a href="mentions-legales.html" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Mentions légales</a></li>
-            <li><a href="politiques-de-confidentialite.html" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Politique de confidentialité</a></li>
-            <li><a href="conditions-d-utilisations.html" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Conditions d'utilisation</a></li>
-            <li><a href="politique-de-remboursement.html" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Politique de remboursement</a></li>
-            <li><a href="#faq" @click.prevent="scrollToSection('#faq')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">FAQ</a></li>
+            <li><router-link to="/legal-notice" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Mentions légales</router-link></li>
+            <li><router-link to="/privacy-policy" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Politique de confidentialité</router-link></li>
+            <li><router-link to="/terms-of-service" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Conditions d'utilisation</router-link></li>
+            <li><router-link to="/refund-policy" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Politique de remboursement</router-link></li>
+            <li><a href="#faq" @click.prevent="navigateToSection('#faq')" class="text-lg text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">FAQ</a></li>
           </ul>
         </div>
         <div>

@@ -61,7 +61,7 @@ const submitForm = () => {
                 <div>
                   <h4 class="text-xl font-semibold mb-1 text-gray-900 dark:text-light">Email</h4>
                   <p class="text-lg text-gray-600 dark:text-gray-300">Envoyez-nous un email à tout moment</p>
-                  <p class="text-primary text-lg">contact@settisllc.com</p>
+                  <p class="text-primary text-lg">contact@settis-llc.com</p>
                 </div>
               </div>
               <div class="flex items-start">
