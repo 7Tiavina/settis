@@ -5,13 +5,27 @@ import express from 'express';
 import mysql from 'mysql';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import { body, validationResult } from 'express-validator';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
+app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
+
+// Rate Limiter
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use('/api/', apiLimiter);
 
 // MySQL Connection
 const db = mysql.createConnection({
@@ -29,13 +43,28 @@ db.connect((err) => {
   console.log('Connected to database!');
 });
 
-// API endpoint for contact form submission
-app.post('/api/contact', (req, res) => {
-  const { name, email, subject, message } = req.body;
+// Validation rules
+const contactValidationRules = [
+  body('name').not().isEmpty().trim().escape().withMessage('Name is required.'),
+  body('email').isEmail().normalizeEmail().withMessage('A valid email is required.'),
+  body('subject').not().isEmpty().trim().escape().withMessage('Subject is required.'),
+  body('message').not().isEmpty().trim().escape().withMessage('Message is required.'),
+  body('honeypot').isEmpty().withMessage('Bots are not allowed.')
+];
 
-  if (!name || !email || !subject || !message) {
-    return res.status(400).send('All fields are required.');
+const newsletterValidationRules = [
+  body('email').isEmail().normalizeEmail().withMessage('A valid email is required.'),
+  body('honeypot').isEmpty().withMessage('Bots are not allowed.')
+];
+
+// API endpoint for contact form submission
+app.post('/api/contact', contactValidationRules, (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
+
+  const { name, email, subject, message } = req.body;
 
   const query = 'INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)';
   db.query(query, [name, email, subject, message], (err, result) => {
@@ -48,12 +77,13 @@ app.post('/api/contact', (req, res) => {
 });
 
 // API endpoint for newsletter subscription
-app.post('/api/newsletter', (req, res) => {
-  const { email } = req.body;
-
-  if (!email) {
-    return res.status(400).send('Email is required.');
+app.post('/api/newsletter', newsletterValidationRules, (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
+
+  const { email } = req.body;
 
   const query = 'INSERT INTO newsletter_subscribers (email) VALUES (?)';
   db.query(query, [email], (err, result) => {

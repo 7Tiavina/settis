@@ -7,19 +7,28 @@ const name = ref('')
 const email = ref('')
 const subject = ref('')
 const message = ref('')
+const honeypot = ref('') // Honeypot field
 
+const loading = ref(false)
 const showAlert = ref(false)
 const alertTitle = ref('')
 const alertMessage = ref('')
 
 const submitForm = async () => {
+  loading.value = true;
+  const delay = new Promise(resolve => setTimeout(resolve, 2000));
+
   try {
-    await axios.post('http://localhost:3000/api/contact', {
-      name: name.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value
-    });
+    await Promise.all([
+      axios.post('http://localhost:3000/api/contact', {
+        name: name.value,
+        email: email.value,
+        subject: subject.value,
+        message: message.value,
+        honeypot: honeypot.value
+      }),
+      delay
+    ]);
     alertTitle.value = 'Message Envoyé';
     alertMessage.value = 'Merci pour votre message ! Nous vous contacterons bientôt.';
     showAlert.value = true;
@@ -28,11 +37,19 @@ const submitForm = async () => {
     email.value = ''
     subject.value = ''
     message.value = ''
-  } catch (error) {
+    honeypot.value = ''
+  } catch (error: any) {
+    await delay; // Also wait in case of error for consistent UX
     console.error('Error submitting form:', error);
     alertTitle.value = 'Erreur';
-    alertMessage.value = 'Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer.';
+    if (error.response && error.response.data && error.response.data.errors) {
+      alertMessage.value = error.response.data.errors.map((e: any) => e.msg).join(' ');
+    } else {
+      alertMessage.value = 'Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer.';
+    }
     showAlert.value = true;
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -52,6 +69,11 @@ const closeAlert = () => {
       <div class="grid md:grid-cols-2 gap-12">
         <div class="animate__animated animate__fadeInUp">
           <form class="space-y-6" @submit.prevent="submitForm">
+            <!-- Honeypot field -->
+            <div class="hidden">
+              <label for="honeypot">Do not fill this out</label>
+              <input type="text" id="honeypot" name="honeypot" v-model="honeypot">
+            </div>
             <div>
               <label for="name" class="block mb-2 text-lg text-gray-900 dark:text-light">Nom complet *</label>
               <input type="text" id="name" v-model="name" class="w-full bg-light dark:bg-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre nom complet" required>
@@ -68,7 +90,13 @@ const closeAlert = () => {
               <label for="message" class="block mb-2 text-lg text-gray-900 dark:text-light">Message *</label>
               <textarea id="message" rows="5" v-model="message" class="w-full bg-light dark:bg-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Parlez-nous de votre projet ou demande..." required></textarea>
             </div>
-            <button type="submit" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2 mt-4">Envoyer le message</button>
+            <button type="submit" class="relative h-12 w-full overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2 mt-4 flex items-center justify-center" :disabled="loading">
+              <span v-if="!loading">Envoyer le message</span>
+              <svg v-if="loading" class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
           </form>
         </div>
         <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
@@ -122,5 +150,7 @@ const closeAlert = () => {
 </template>
 
 <style scoped>
-/* Nous ajouterons ici les styles spécifiques si nécessaire */
+.hidden {
+  display: none;
+}
 </style>

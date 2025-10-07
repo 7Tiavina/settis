@@ -6,36 +6,44 @@ import CustomAlert from '../common/CustomAlert.vue'
 
 const { navigateToSection } = useSectionNavigation()
 const email = ref('')
+const honeypot = ref('') // Honeypot field
 
+const loading = ref(false)
 const showAlert = ref(false)
 const alertTitle = ref('')
 const alertMessage = ref('')
 
 const subscribe = async () => {
-  if (!email.value) {
-    alertTitle.value = 'Erreur';
-    alertMessage.value = 'Veuillez entrer une adresse email.';
-    showAlert.value = true;
-    return;
-  }
+  loading.value = true;
+  const delay = new Promise(resolve => setTimeout(resolve, 2000));
 
   try {
-    await axios.post('http://localhost:3000/api/newsletter', {
-      email: email.value
-    });
+    await Promise.all([
+      axios.post('http://localhost:3000/api/newsletter', {
+        email: email.value,
+        honeypot: honeypot.value
+      }),
+      delay
+    ]);
     alertTitle.value = 'Inscription Réussie';
     alertMessage.value = 'Merci pour votre abonnement à notre newsletter !';
     showAlert.value = true;
     email.value = ''
+    honeypot.value = ''
   } catch (error: any) {
+    await delay; // Also wait in case of error for consistent UX
     console.error('Error subscribing:', error);
     alertTitle.value = 'Erreur';
-    if (error.response && error.response.data) {
+    if (error.response && error.response.data && error.response.data.errors) {
+      alertMessage.value = error.response.data.errors.map((e: any) => e.msg).join(' ');
+    } else if (error.response && error.response.data) {
       alertMessage.value = error.response.data;
     } else {
       alertMessage.value = 'Une erreur s\'est produite lors de l\'inscription. Veuillez réessayer.';
     }
     showAlert.value = true;
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -97,8 +105,19 @@ const closeAlert = () => {
           </div>
           <p class="text-lg text-gray-600 dark:text-gray-300">Abonnez-vous à notre newsletter pour les dernières mises à jour</p>
           <form @submit.prevent="subscribe" class="flex mt-2">
+            <!-- Honeypot field -->
+            <div class="hidden">
+              <label for="honeypot-footer">Do not fill this out</label>
+              <input type="text" id="honeypot-footer" name="honeypot" v-model="honeypot">
+            </div>
             <input type="email" v-model="email" placeholder="Votre email" class="bg-light dark:bg-dark border border-gray-300 dark:border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary w-full text-gray-900 dark:text-light">
-            <button type="submit" class="bg-primary text-white px-4 rounded-r-lg">S'abonner</button>
+            <button type="submit" class="bg-primary text-white px-4 rounded-r-lg flex items-center justify-center" :disabled="loading">
+              <span v-if="!loading">S'abonner</span>
+              <svg v-if="loading" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
           </form>
         </div>
       </div>
@@ -114,3 +133,9 @@ const closeAlert = () => {
     />
   </footer>
 </template>
+
+<style scoped>
+.hidden {
+  display: none;
+}
+</style>
