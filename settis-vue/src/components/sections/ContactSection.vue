@@ -1,20 +1,43 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import axios from 'axios'
+import CustomAlert from '../common/CustomAlert.vue'
 
 const name = ref('')
 const email = ref('')
 const subject = ref('')
 const message = ref('')
 
-const submitForm = () => {
-  // Ici, nous ajouterons la logique pour envoyer le formulaire
-  console.log('Formulaire soumis:', { name: name.value, email: email.value, subject: subject.value, message: message.value })
-  // Réinitialiser le formulaire après soumission
-  name.value = ''
-  email.value = ''
-  subject.value = ''
-  message.value = ''
-  alert('Merci pour votre message ! Nous vous contacterons bientôt.')
+const showAlert = ref(false)
+const alertTitle = ref('')
+const alertMessage = ref('')
+
+const submitForm = async () => {
+  try {
+    await axios.post('http://localhost:3000/api/contact', {
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value
+    });
+    alertTitle.value = 'Message Envoyé';
+    alertMessage.value = 'Merci pour votre message ! Nous vous contacterons bientôt.';
+    showAlert.value = true;
+    // Réinitialiser le formulaire après soumission
+    name.value = ''
+    email.value = ''
+    subject.value = ''
+    message.value = ''
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    alertTitle.value = 'Erreur';
+    alertMessage.value = 'Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer.';
+    showAlert.value = true;
+  }
+}
+
+const closeAlert = () => {
+  showAlert.value = false;
 }
 </script>
 
@@ -89,6 +112,12 @@ const submitForm = () => {
         </div>
       </div>
     </div>
+    <CustomAlert 
+      :visible="showAlert" 
+      :title="alertTitle" 
+      :message="alertMessage" 
+      @close="closeAlert" 
+    />
   </section>
 </template>
 

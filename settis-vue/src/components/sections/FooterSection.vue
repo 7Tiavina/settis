@@ -1,16 +1,46 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useSectionNavigation } from '@/composables/useSectionNavigation'
+import axios from 'axios'
+import CustomAlert from '../common/CustomAlert.vue'
 
 const { navigateToSection } = useSectionNavigation()
 const email = ref('')
 
-const subscribe = () => {
-  // Ici, nous ajouterons la logique pour l'abonnement à la newsletter
-  console.log('Abonnement à la newsletter:', email.value)
-  // Réinitialiser le champ après soumission
-  email.value = ''
-  alert('Merci pour votre abonnement à notre newsletter !')
+const showAlert = ref(false)
+const alertTitle = ref('')
+const alertMessage = ref('')
+
+const subscribe = async () => {
+  if (!email.value) {
+    alertTitle.value = 'Erreur';
+    alertMessage.value = 'Veuillez entrer une adresse email.';
+    showAlert.value = true;
+    return;
+  }
+
+  try {
+    await axios.post('http://localhost:3000/api/newsletter', {
+      email: email.value
+    });
+    alertTitle.value = 'Inscription Réussie';
+    alertMessage.value = 'Merci pour votre abonnement à notre newsletter !';
+    showAlert.value = true;
+    email.value = ''
+  } catch (error: any) {
+    console.error('Error subscribing:', error);
+    alertTitle.value = 'Erreur';
+    if (error.response && error.response.data) {
+      alertMessage.value = error.response.data;
+    } else {
+      alertMessage.value = 'Une erreur s\'est produite lors de l\'inscription. Veuillez réessayer.';
+    }
+    showAlert.value = true;
+  }
+}
+
+const closeAlert = () => {
+  showAlert.value = false;
 }
 </script>
 
@@ -76,5 +106,11 @@ const subscribe = () => {
         <p class="text-lg text-gray-600 dark:text-gray-300">© 2025 SETTIS LLC – Tous droits réservés.</p>
       </div>
     </div>
+    <CustomAlert 
+      :visible="showAlert" 
+      :title="alertTitle" 
+      :message="alertMessage" 
+      @close="closeAlert" 
+    />
   </footer>
 </template>
