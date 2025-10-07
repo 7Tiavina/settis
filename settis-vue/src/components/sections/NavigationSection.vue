@@ -29,8 +29,8 @@ const handleNavigation = (sectionId: string) => {
         <img src="/logo-for-blackTheme.png" alt="Logo SETTIS LLC" class="h-10 hidden dark:inline">
       </a>
       <div class="hidden md:flex space-x-8 items-center">
-        <a href="#hero-section" @click.prevent="navigateToSection('#hero-section')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Accueil</a>
-        <a href="#about" @click.prevent="navigateToSection('#about')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">À propos</a>
+        <a href="#hero-section" @click.prevent="navigateToSection('#hero-section')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+        <a href="#about" @click.prevent="navigateToSection('#about')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">About</a>
         <a href="#services" @click.prevent="navigateToSection('#services')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Services</a>
         <a href="#contact" @click.prevent="navigateToSection('#contact')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Contact</a>
         <a href="#faq" @click.prevent="navigateToSection('#faq')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">FAQ</a>
@@ -51,12 +51,12 @@ const handleNavigation = (sectionId: string) => {
     <!-- Mobile Menu -->
     <div class="md:hidden bg-light dark:bg-dark border-t border-gray-200 dark:border-gray-800 py-4" :class="{ 'hidden': !isMenuOpen }">
       <div class="container mx-auto px-4 flex flex-col space-y-4">
-        <a href="#hero-section" @click.prevent="handleNavigation('#hero-section')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Accueil</a>
-        <a href="#about" @click.prevent="handleNavigation('#about')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">À propos</a>
+        <a href="#hero-section" @click.prevent="handleNavigation('#hero-section')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+        <a href="#about" @click.prevent="handleNavigation('#about')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">About</a>
         <a href="#services" @click.prevent="handleNavigation('#services')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Services</a>
         <a href="#contact" @click.prevent="handleNavigation('#contact')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Contact</a>
         <a href="#faq" @click.prevent="handleNavigation('#faq')" class="nav-link py-2 text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">FAQ</a>
-        <a href="#contact" @click.prevent="handleNavigation('#contact')" class="btn-primary w-full text-center mt-4">Commencer</a>
+        <a href="#contact" @click.prevent="handleNavigation('#contact')" class="btn-primary w-full text-center mt-4">Get Started</a>
       </div>
     </div>
   </nav>

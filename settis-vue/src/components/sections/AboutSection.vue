@@ -6,33 +6,49 @@
   <section id="about" class="py-20 bg-light dark:bg-dark">
     <div class="container mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-light">À propos de <span class="text-primary">SETTIS LLC</span></h2>
-        <p class="text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Fondée en 2025, SETTIS LLC est une entreprise technologique tournée vers l'avenir, dédiée à la création de solutions digitales innovantes qui comblent le fossé entre la technologie de pointe et les applications du monde réel.</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-light">
+          About <span class="text-primary">SETTIS LLC</span>
+        </h2>
+        <p class="text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Founded in 2025, SETTIS LLC is a forward-thinking technology company based in Missouri, USA. We are dedicated to creating innovative digital solutions that bridge the gap between cutting-edge technology and real-world applications.
+        </p>
 
-        <h2 class="text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-900 dark:text-light">Pourquoi choisir SETTIS ?</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Avec plusieurs années d’expérience, SETTIS propose des solutions modernes adaptées à vos besoins numériques.</p>
+        <h2 class="text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-900 dark:text-light">Why choose SETTIS?</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          With several years of experience, SETTIS offers modern and scalable solutions tailored to your digital needs.
+        </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12 mb-16">
         <div>
-          <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-light">Notre histoire</h3>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">SETTIS LLC est née d'une vision visant à démontrer l'accès à des solutions digitales de haute qualité. Fondée en 2025, notre entreprise a été construite sur le principe que la technologie innovante devrait être accessible aux entreprises de toutes tailles, des startups aux grandes entreprises.</p>
-          <p class="text-lg text-gray-600 dark:text-gray-300">Notre équipe combine des années d'expérience dans le développement logiciel, les applications mobiles et l'innovation digitale. Nous nous spécialisons dans la création de solutions qui répondent non seulement aux besoins actuels, mais anticipent également les défis et opportunités futurs.</p>
+          <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-light">Our Story</h3>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            SETTIS LLC was founded in Missouri in 2025 with a clear mission — to provide high-quality, accessible, and reliable digital solutions. Our goal is to help businesses of all sizes harness technology to reach their full potential.
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            Our team combines years of experience in software development, web technologies, and creative digital innovation. We focus on delivering solutions that meet today’s needs while preparing for tomorrow’s opportunities.
+          </p>
         </div>
         <div class="bg-light dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 card-hover">
-          <h3 class="text-3xl font-bold mb-6 text-primary">Nos valeurs fondamentales</h3>
+          <h3 class="text-3xl font-bold mb-6 text-primary">Our Core Values</h3>
           <div class="space-y-6">
             <div>
               <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Innovation</h4>
-              <p class="text-lg text-gray-600 dark:text-gray-300">Nous repoussons constamment les limites de la technologie pour créer des solutions de pointe qui stimulent le progrès et transforment les industries.</p>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                We push technological boundaries to deliver advanced and impactful solutions that drive business growth.
+              </p>
             </div>
             <div>
-              <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Fiabilité</h4>
-              <p class="text-lg text-gray-600 dark:text-gray-300">Notre engagement envers la qualité et la responsabilité garantit que chaque projet répond aux normes d'excellence les plus élevées.</p>
+              <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Reliability</h4>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                We are committed to excellence and consistency, ensuring that every project meets the highest standards.
+              </p>
             </div>
             <div>
-              <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Accessibilité mondiale</h4>
-              <p class="text-lg text-gray-600 dark:text-gray-300">Nous concevons des solutions avec une perspective globale, garantissant que les clients sont accessibles et précieux pour les utilisateurs du monde entier.</p>
+              <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Global Vision</h4>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Our solutions are designed for global scalability, helping clients connect and thrive in the international digital ecosystem.
+              </p>
             </div>
           </div>
         </div>
@@ -43,22 +59,28 @@
           <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
             <i class="fas fa-building text-2xl text-light"></i>
           </div>
-          <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Fondation de l'entreprise</h4>
-          <p class="text-lg text-gray-600 dark:text-gray-300">SETTIS LLC a été créée en tant que société à responsabilité limitée basée dans le Delaware, réunissant une équipe de développeurs et d'innovateurs expérimentés.</p>
+          <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Company Foundation</h4>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            SETTIS LLC was officially established in Missouri, bringing together a talented team of developers, designers, and strategists focused on innovation and quality.
+          </p>
         </div>
         <div class="bg-light dark:bg-gray-800 rounded-3xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
           <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
             <i class="fas fa-rocket text-2xl text-light"></i>
           </div>
-          <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Premier lancement de produit</h4>
-          <p class="text-lg text-gray-600 dark:text-gray-300">Lancement réussi de CRIF, notre solution SaaS phare pour les pré-spécifications de cartes d'identité nationales en ligne, rationalisant les services gouvernementaux.</p>
+          <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">First Product Launch</h4>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            Our first digital platform marked the beginning of our journey, focused on building innovative web tools and high-performance online services.
+          </p>
         </div>
         <div class="bg-light dark:bg-gray-800 rounded-3xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
           <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
             <i class="fas fa-chart-line text-2xl text-light"></i>
           </div>
-          <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Expansion du marché</h4>
-          <p class="text-lg text-gray-600 dark:text-gray-300">Élargissement de nos services pour inclure le développement d'applications mobiles et le gaming PC, établissant des partenariats avec les principales plateformes de distribution.</p>
+          <h4 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-light">Market Expansion</h4>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            We expanded our expertise into mobile application development and PC software, forming partnerships with trusted distribution networks.
+          </p>
         </div>
       </div>
     </div>
@@ -66,5 +88,5 @@
 </template>
 
 <style scoped>
-/* Nous ajouterons ici les styles spécifiques si nécessaire */
+/* Styles spécifiques si nécessaire */
 </style>

@@ -1,57 +1,57 @@
 <template>
   <main class="container mx-auto px-4 py-24 pt-40">
-    <h1 class="text-4xl font-bold mb-8 text-center">Conditions Générales d’Utilisation (CGU)</h1>
+    <h1 class="text-4xl font-bold mb-8 text-center">Terms of Use (TOU)</h1>
     <div class="space-y-8">
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">1. Acceptation des conditions</h2>
-        <p>En accédant et en utilisant le site <strong>settisllc.com</strong>, vous acceptez sans réserve les présentes Conditions Générales d’Utilisation. Si vous n’acceptez pas ces conditions, vous devez cesser toute utilisation du site.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">1. Acceptance of Terms</h2>
+        <p>By accessing and using the website <strong>settisllc.com</strong>, you fully accept these Terms of Use. If you do not agree with these terms, you must stop using the website immediately.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">2. Objet</h2>
-        <p>Le site <strong>SETTIS LLC</strong> propose des services numériques incluant : développement web et mobile, solutions SaaS, publication d’applications mobiles, ainsi que la vente de jeux PC via Steam et autres plateformes.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">2. Purpose</h2>
+        <p>The website <strong>SETTIS LLC</strong> provides digital services including: web and mobile development, SaaS solutions, mobile app publishing, and the sale of PC games via Steam and other platforms.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">3. Accès au site</h2>
-        <p>L’accès au site est gratuit pour tout utilisateur disposant d’une connexion Internet. Tous les frais liés à l’accès (matériel, logiciel, connexion Internet) restent à la charge de l’utilisateur.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">3. Access to the Website</h2>
+        <p>Access to the website is free for any user with an Internet connection. All costs related to access (hardware, software, Internet connection) are the responsibility of the user.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">4. Utilisation des services</h2>
-        <p>L’utilisateur s’engage à utiliser les services proposés de manière légale et conforme aux lois en vigueur. Toute utilisation abusive, frauduleuse ou illicite pourra entraîner la suspension ou la suppression de l’accès.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">4. Use of Services</h2>
+        <p>The user agrees to use the services legally and in compliance with applicable laws. Any abusive, fraudulent, or illegal use may result in suspension or termination of access.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">5. Responsabilités</h2>
-        <p>SETTIS LLC met tout en œuvre pour assurer la disponibilité et la fiabilité de ses services, mais ne saurait être tenue responsable des interruptions, bugs, ou dommages liés à l’utilisation du site.</p>
-        <p>Le contenu fourni par SETTIS LLC est donné à titre informatif et ne constitue pas un engagement contractuel.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">5. Responsibilities</h2>
+        <p>SETTIS LLC makes every effort to ensure the availability and reliability of its services, but cannot be held responsible for interruptions, bugs, or damages related to the use of the website.</p>
+        <p>Content provided by SETTIS LLC is for informational purposes only and does not constitute a contractual commitment.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">6. Propriété intellectuelle</h2>
-        <p>L’ensemble du contenu du site (textes, logos, images, vidéos, éléments graphiques, code source) est protégé par le droit d’auteur et reste la propriété exclusive de SETTIS LLC.</p>
-        <p>Toute reproduction ou diffusion non autorisée est strictement interdite.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">6. Intellectual Property</h2>
+        <p>All content on the website (texts, logos, images, videos, graphic elements, source code) is protected by copyright and remains the exclusive property of SETTIS LLC.</p>
+        <p>Any unauthorized reproduction or distribution is strictly prohibited.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">7. Données personnelles</h2>
-        <p>La collecte et le traitement des données personnelles sont réalisés conformément à la <a href="politiques-de-confidentialite.html" class="text-primary hover:underline">Politique de Confidentialité</a> disponible sur le site.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">7. Personal Data</h2>
+        <p>Collection and processing of personal data are carried out in accordance with the <a href="privacy-policy.html" class="text-primary hover:underline">Privacy Policy</a> available on the website.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">8. Modification des conditions</h2>
-        <p>SETTIS LLC se réserve le droit de modifier les présentes conditions à tout moment. Les utilisateurs seront informés des changements par leur publication sur le site.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">8. Changes to the Terms</h2>
+        <p>SETTIS LLC reserves the right to modify these terms at any time. Users will be informed of changes by their publication on the website.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
-        <h2 class="text-2xl font-semibold mb-4 text-primary">9. Droit applicable</h2>
-        <p>Les présentes CGU sont régies par les lois des États-Unis. Tout litige sera soumis à la juridiction compétente de l’État où SETTIS LLC est enregistrée.</p>
+        <h2 class="text-2xl font-semibold mb-4 text-primary">9. Governing Law</h2>
+        <p>These Terms of Use are governed by the laws of the United States. Any dispute will be subject to the competent jurisdiction of the state where SETTIS LLC is registered.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
         <h2 class="text-2xl font-semibold mb-4 text-primary">10. Contact</h2>
-        <p>Pour toute question concernant les présentes CGU, vous pouvez nous contacter à l’adresse suivante : <strong>contact@settis-llc.com</strong>.</p>
+        <p>For any questions regarding these Terms of Use, you may contact us at: <strong>contact@settis-llc.com</strong>.</p>
       </div>
     </div>
   </main>
