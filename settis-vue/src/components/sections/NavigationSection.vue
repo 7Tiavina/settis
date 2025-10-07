@@ -25,8 +25,8 @@ const handleNavigation = (sectionId: string) => {
   <nav class="fixed w-full bg-light/80 dark:bg-dark/80 backdrop-blur-sm z-50 py-4 border-b border-gray-200 dark:border-gray-800">
     <div class="container mx-auto px-4 flex justify-between items-center">
       <a href="/" @click.prevent="navigateToSection('#hero-section')" class="flex items-center">
-        <img src="/logo-for-whiteTheme.png" alt="Settis Logo" class="h-10 dark:hidden">
-        <img src="/logo-for-blackTheme.png" alt="Settis Logo" class="h-10 hidden dark:inline">
+        <img src="/logo-for-whiteTheme.png" alt="Logo SETTIS LLC" class="h-10 dark:hidden">
+        <img src="/logo-for-blackTheme.png" alt="Logo SETTIS LLC" class="h-10 hidden dark:inline">
       </a>
       <div class="hidden md:flex space-x-8 items-center">
         <a href="#hero-section" @click.prevent="navigateToSection('#hero-section')" class="nav-link text-xl text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Accueil</a>

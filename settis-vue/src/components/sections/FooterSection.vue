@@ -20,10 +20,14 @@ const subscribe = () => {
       <div class="grid md:grid-cols-4 gap-8 mb-8">
         <div>
           <a href="#" @click.prevent="navigateToSection('#hero-section')" class="flex items-center mb-4">
-            <img src="/logo-for-whiteTheme.png" alt="Settis Logo" class="h-8 dark:hidden">
-            <img src="/logo-for-blackTheme.png" alt="Settis Logo" class="h-8 hidden dark:inline">
+            <img src="/logo-for-whiteTheme.png" alt="Logo SETTIS LLC" class="h-8 dark:hidden">
+            <img src="/logo-for-blackTheme.png" alt="Logo SETTIS LLC" class="h-8 hidden dark:inline">
           </a>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-4">Innovating Digital Solutions for a Global Future. Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
+          <div class="text-lg text-gray-600 dark:text-gray-300 mb-4">
+            <span class="text-primary">Innovating Digital Solutions</span>
+            <span class="text-gray-900 dark:text-light">for a Global Future.</span>
+            <p>Specializing in web development, mobile apps, SaaS solutions, and PC gaming experiences.</p>
+          </div>
           <p class="text-primary text-lg">Email: contact@settis-llc.com</p>
         </div>
         <div>

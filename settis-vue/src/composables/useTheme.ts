@@ -50,10 +50,10 @@ export function useTheme() {
   onMounted(() => {
     initializeTheme()
   })
-  
+
   return {
     isDarkMode,
     toggleTheme,
-    initializeTheme
+    initializeTheme, // Exporter la fonction
   }
 }

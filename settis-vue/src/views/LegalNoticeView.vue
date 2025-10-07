@@ -5,9 +5,10 @@
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
         <h2 class="text-2xl font-semibold mb-4 text-primary">Informations légales</h2>
         <p><strong>Nom de la société :</strong> SETTIS LLC</p>
+        <p><strong>Numéro d'enregistrement :</strong> LC014645808</p>
         <p><strong>Forme juridique :</strong> Limited Liability Company (LLC) enregistrée aux États-Unis</p>
         <p><strong>Date de création :</strong> 2025</p>
-        <p><strong>Adresse :</strong> [Adresse officielle enregistrée de la société aux États-Unis]</p>
+        <p><strong>Adresse :</strong> 117 South Lexington Street Ste 100 Harrisonville, MO 64701 United States of America</p>
         <p><strong>Email de contact :</strong> <strong>contact@settis-llc.com</strong></p>
       </div>
 

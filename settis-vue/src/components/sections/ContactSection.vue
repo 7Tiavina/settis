@@ -71,7 +71,7 @@ const submitForm = () => {
                 <div>
                   <h4 class="text-xl font-semibold mb-1 text-gray-900 dark:text-light">Adresse</h4>
                   <p class="text-lg text-gray-600 dark:text-gray-300">Notre siège social</p>
-                  <p class="text-primary text-lg">1234 Innovation Drive, Suite 567<br>Austin, TX 78701, États-Unis</p>
+                  <p class="text-primary text-lg">117 South Lexington Street Ste 100<br>Harrisonville, MO 64701<br>United States of America</p>
                 </div>
               </div>
               <div class="flex items-start">

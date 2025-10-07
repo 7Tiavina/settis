@@ -30,11 +30,11 @@ const { isDarkMode } = useTheme()
           <!-- Texte Hero aligné à gauche -->
           <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInDown text-left">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
-              Innovating Digital Solutions for a <span class="text-primary">Global Future</span>
+              Innovating Digital Solutions <span class="text-orange-500">for a Global Future.</span>
             </h1>
             <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">
-              Nous créons des expériences digitales exceptionnelles à travers le développement freelance, 
-              les solutions SaaS, les applications mobiles et le gaming PC.
+              SETTIS est une agence web et digitale spécialisée dans la conception de sites performants, 
+              la gestion de bases de données et le développement sur mesure.
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <button @click="scrollToSection('#services')" class="relative h-12 overflow-hidden rounded-full border-2 border-primary bg-transparent px-5 py-2.5 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2">

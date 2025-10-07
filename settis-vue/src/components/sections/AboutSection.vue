@@ -8,6 +8,9 @@
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-light">À propos de <span class="text-primary">SETTIS LLC</span></h2>
         <p class="text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Fondée en 2025, SETTIS LLC est une entreprise technologique tournée vers l'avenir, dédiée à la création de solutions digitales innovantes qui comblent le fossé entre la technologie de pointe et les applications du monde réel.</p>
+
+        <h2 class="text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-900 dark:text-light">Pourquoi choisir SETTIS ?</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Avec plusieurs années d’expérience, SETTIS propose des solutions modernes adaptées à vos besoins numériques.</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12 mb-16">
