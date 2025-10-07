@@ -4,7 +4,7 @@
     <div class="space-y-8">
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">
         <h2 class="text-2xl font-semibold mb-4 text-primary">1. Acceptance of Terms</h2>
-        <p>By accessing and using the website <strong>settisllc.com</strong>, you fully accept these Terms of Use. If you do not agree with these terms, you must stop using the website immediately.</p>
+        <p>By accessing and using the website <strong>settis-llc.com</strong>, you fully accept these Terms of Use. If you do not agree with these terms, you must stop using the website immediately.</p>
       </div>
 
       <div class="bg-light dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 card-hover">

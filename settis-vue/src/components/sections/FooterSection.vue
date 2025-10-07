@@ -19,7 +19,7 @@ const subscribe = async () => {
 
   try {
     await Promise.all([
-      axios.post('http://localhost:3000/api/newsletter', {
+      axios.post('https://settis-llc.com/backend/newsletter.php', {
         email: email.value,
         honeypot: honeypot.value
       }),
@@ -37,7 +37,7 @@ const subscribe = async () => {
     if (error.response && error.response.data && error.response.data.errors) {
       alertMessage.value = error.response.data.errors.map((e: any) => e.msg).join(' ')
     } else if (error.response && error.response.data) {
-      alertMessage.value = error.response.data
+      alertMessage.value = typeof error.response.data === 'string' ? error.response.data : JSON.stringify(error.response.data)
     } else {
       alertMessage.value = 'An error occurred while subscribing. Please try again.'
     }
@@ -51,6 +51,7 @@ const closeAlert = () => {
   showAlert.value = false
 }
 </script>
+
 
 <template>
   <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4">

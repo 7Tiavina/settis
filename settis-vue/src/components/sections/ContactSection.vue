@@ -19,16 +19,16 @@ const submitForm = async () => {
   const delay = new Promise(resolve => setTimeout(resolve, 2000));
 
   try {
-    await Promise.all([
-      axios.post('http://localhost:3000/api/contact', {
-        name: name.value,
-        email: email.value,
-        subject: subject.value,
-        message: message.value,
-        honeypot: honeypot.value
-      }),
-      delay
-    ]);
+      await Promise.all([
+    axios.post('https://settis-llc.com/backend/contact.php', {
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value,
+      honeypot: honeypot.value
+    }),
+    delay
+  ]);
     alertTitle.value = 'Message Sent';
     alertMessage.value = 'Thank you for your message! We will contact you soon.';
     showAlert.value = true;
