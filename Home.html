@@ -242,6 +242,68 @@
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
         }
 
+        /* FAQ SECTION */
+        #faq {
+            padding: 100px 8%;
+        }
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .faq-item:hover {
+            box-shadow: 0 10px 30px rgba(245, 128, 32, 0.15);
+            border-color: rgba(245, 128, 32, 0.3);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            background: rgba(245, 128, 32, 0.05);
+        }
+        .faq-question h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+            padding-right: 20px;
+        }
+        .faq-question i {
+            color: var(--orange);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 30px 25px 30px;
+        }
+        .faq-answer p {
+            color: var(--light-text);
+            line-height: 1.7;
+            margin: 0;
+        }
+
         /* CONTACT FORM */
         .contact-content {
             display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
@@ -290,10 +352,57 @@
 
         /* FOOTER */
         .footer {
-            padding: 50px 8%; text-align: center; font-size: 0.9rem; color: #666;
-            background-color: var(--dark); color: rgba(255,255,255,0.7);
+            padding: 50px 8%; text-align: center; font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             z-index: var(--content-z-index);
             position: relative;
+            color: var(--dark);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-logo img {
+            filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.1));
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        .footer-copyright {
+            margin-top: 25px;
+            color: var(--light-text);
+            font-size: 0.85rem;
         }
 
         /* Animations (reveal.css - ajustées pour des apparitions plus belles) */
@@ -494,14 +603,109 @@
         </div>
     </section>
 
+    <section id="faq">
+        <h2 class="reveal">Frequently Asked <span>Questions</span></h2>
+        <div class="section-content reveal">
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Combien coûte un projet de développement web ?</h3>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le coût dépend de la complexité et des fonctionnalités souhaitées. Un site vitrine commence autour de 2 000€, tandis qu'une application web personnalisée peut aller de 5 000€ à 20 000€+. Nous fournissons un devis détaillé après une consultation gratuite.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quel est le délai moyen pour un projet ?</h3>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Un site web simple prend généralement 2-4 semaines, tandis qu'un projet e-commerce ou une application sur mesure peut nécessiter 6-12 semaines selon les spécifications.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Proposez-vous des services de marketing digital ?</h3>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous offrons une gamme complète de services marketing : SEO, gestion des réseaux sociaux, campagnes publicitaires (Google Ads, Facebook Ads), et stratégie de contenu pour maximiser votre visibilité en ligne.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Assurez-vous le maintien et le support après le lancement ?</h3>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument. Nous proposons des contrats de maintenance mensuels qui incluent les mises à jour de sécurité, les sauvegardes, le support technique et les améliorations continues de votre site.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Travaillez-vous avec des entreprises internationales ?</h3>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous collaborons avec des clients aux États-Unis, en Europe et ailleurs. Toutes nos communications peuvent se faire en anglais ou en français, et nous utilisons des outils de collaboration à distance efficaces.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment se déroule la première consultation ?</h3>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La consultation initiale est gratuite et sans engagement. Nous discutons de votre projet, vos objectifs, votre budget et vos délais. Ensuite, nous vous fournissons une proposition détaillée sous 48-72 heures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
-        &copy; 2025 SETTIS LLC. All rights reserved.
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.png" alt="SETTIS Logo" style="max-width: 150px; margin-bottom: 20px;">
+            </div>
+            <div class="footer-links">
+                <a href="#">CGV</a>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Politique de remboursement</a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 SETTIS LLC. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="gradient.js"></script>
     <script>
         // Initialise les icônes Lucide
         lucide.createIcons();
+
+        // FAQ - Accordéon interactif
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Fermer tous les autres items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Basculer l'item cliqué
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
 
         // Fonction pour l'animation au scroll
         function revealElements() {
