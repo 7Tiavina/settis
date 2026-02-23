@@ -4,149 +4,508 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SETTIS - Digital Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        /* Import d'une police plus premium */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        :root {
+            --orange: #f58020;
+            --dark: #1d1d1f;
+            --light-text: #424245;
+            --glass-bg: rgba(255, 255, 255, 0.15); /* Plus opaque pour plus de visibilité */
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --bg-light: #f7f7f7; /* Pour les sections sans gradient */
+            --shadow: rgba(0, 0, 0, 0.05);
+            --gradient-canvas-z-index: 0;
+            --content-z-index: 1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
             font-family: 'Inter', sans-serif;
-            background-color: transparent;
-            overflow-x: hidden;
+            color: var(--dark);
+            scroll-behavior: smooth;
+            background-color: var(--bg-light); /* Couleur de fallback/sections claires */
         }
 
-        /* CONFIGURATION DU GRADIENT */
+        /* GRADIENT BACKGROUND */
         #my-gradient-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Arrière-plan */
-            --gradient-color-1: #f58020; /* Orange Settis */
-            --gradient-color-2: #ffffff; /* Blanc */
-            --gradient-color-3: #f58020; /* Orange Settis */
-            --gradient-color-4: #ffffff; /* Blanc */
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: var(--gradient-canvas-z-index); /* Assure qu'il est en arrière-plan */
+            --gradient-color-1: #f58020;
+            --gradient-color-2: #ffffff;
+            --gradient-color-3: #f58020;
+            --gradient-color-4: #ffffff;
         }
 
-        /* NAVIGATION BAR */
+        /* NAVIGATION */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            top: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 20px 8%;
-            box-sizing: border-box;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10; /* Au-dessus du canvas */
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: background 0.3s ease;
         }
 
-        nav .logo img {
-            height: 40px;
-            display: block;
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.8); /* Plus opaque au scroll */
+            border-bottom-color: rgba(0, 0, 0, 0.1);
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
+        nav .logo img { height: 35px; }
+
+        nav ul { list-style: none; display: flex; gap: 30px; }
 
         nav ul li a {
-            text-decoration: none;
-            color: #1d1d1f;
-            font-weight: 600;
-            font-size: 0.95rem;
+            text-decoration: none; color: var(--dark);
+            font-weight: 600; font-size: 0.9rem;
             transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #f58020;
+        nav ul li a:hover { color: var(--orange); }
+
+        /* REUSABLE LAYOUT & TYPOGRAPHY */
+        section {
+            padding: 100px 8%;
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; /* Pour le z-index du contenu */
+            z-index: var(--content-z-index);
+            background-color: transparent; /* Par défaut, pour laisser voir le gradient */
+        }
+        section:nth-child(even) {
+             background-color: var(--bg-light); /* Bandes claires pour alterner */
+        }
+        section#hero {
+            background-color: transparent;
         }
 
-        /* HERO SECTION */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        h2 { 
+            font-size: clamp(2rem, 5vw, 3.5rem); 
+            font-weight: 800; 
+            margin-bottom: 50px; 
+            letter-spacing: -1px; 
             text-align: center;
-            padding: 0 20px;
-            z-index: 2;
         }
+        h2 span { color: var(--orange); }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            color: #1d1d1f;
-            line-height: 1;
-            margin-bottom: 20px;
-            letter-spacing: -2px;
+        p { line-height: 1.7; color: var(--light-text); font-size: 1.05rem; }
+
+        /* HERO */
+        .hero { text-align: center; align-items: center; }
+        .hero h1 { 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            font-weight: 800; line-height: 0.9; 
+            margin-bottom: 25px; 
+            color: var(--dark);
         }
+        .hero h1 span { color: var(--orange); }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 700px; margin-bottom: 40px; color: var(--light-text); }
 
-        .hero h1 span {
-            color: #f58020;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #424245;
-            max-width: 600px;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-
-        /* BOUTON */
         .btn {
-            background: #1d1d1f;
-            color: white;
-            padding: 16px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, background 0.3s;
+            background: var(--dark); color: white;
+            padding: 18px 40px; border-radius: 100px;
+            text-decoration: none; font-weight: 600;
+            transition: 0.3s ease; display: inline-block;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        .btn:hover { background: var(--orange); transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px var(--shadow); }
+
+        /* GENERAL LAYOUT FOR SECTIONS */
+        .section-content {
+            display: flex; flex-direction: column; gap: 60px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .text-image-layout {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 50px; flex-wrap: wrap;
+        }
+        .text-image-layout.reverse { flex-direction: row-reverse; }
+        .text-image-layout > div { flex: 1; min-width: 300px; }
+        .text-image-layout .illustration { 
+            flex: 1; min-width: 300px; text-align: center; 
+            background: var(--glass-bg); padding: 20px; border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+        .text-image-layout .illustration img { max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* CARD STYLING */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        .btn:hover {
-            background: #f58020;
-            transform: translateY(-3px);
+        .card {
+            background: var(--glass-bg);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .card:hover { 
+            border-color: var(--orange); 
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+        }
+        .card i { 
+            color: var(--orange); 
+            margin-bottom: 20px; 
+            display: block; 
+            font-size: 2.5rem; 
+            line-height: 1;
+        }
+        .card h3 { margin-bottom: 12px; font-size: 1.4rem; color: var(--dark); }
+        .card p { font-size: 0.95rem; color: var(--light-text); }
+
+        /* PROCESS SECTION */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .process-step::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -20px; left: 50%; transform: translateX(-50%);
+            background: var(--orange);
+            color: white;
+            border-radius: 50%;
+            width: 50px; height: 50px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; font-weight: 800;
+            border: 4px solid var(--bg-light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .process-step h3 { margin-top: 25px; margin-bottom: 10px; font-size: 1.3rem; color: var(--dark); }
+        .process-step p { font-size: 0.9rem; }
+        .process-step:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .process-step img {
+            max-width: 120px; /* Taille des icônes d'étape */
+            height: auto;
+            margin-top: 15px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
+
+        /* CONTACT FORM */
+        .contact-content {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: center;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .contact-info h2 { text-align: left; margin-bottom: 30px; }
+        .contact-info p, .contact-info a {
+            font-size: 1.1rem; color: var(--light-text); margin-bottom: 10px; display: block;
+            text-decoration: none;
+        }
+        .contact-info a:hover { color: var(--orange); }
+
+        form {
+            display: flex; flex-direction: column; gap: 18px;
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        input, textarea {
+            padding: 16px 20px; border-radius: 12px; border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.7); /* Plus clair pour les inputs */
+            font-family: inherit; font-size: 1rem; color: var(--dark);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(245, 128, 32, 0.2);
+        }
+        textarea { resize: vertical; min-height: 120px; }
+
+        .submit-btn {
+            background: var(--dark); color: white;
+            padding: 16px 30px; border-radius: 100px;
+            text-decoration: none; font-weight: 600;
+            transition: 0.3s ease; border: none; cursor: pointer;
+            box-shadow: 0 5px 15px var(--shadow);
+            font-size: 1.05rem;
+            width: fit-content;
+        }
+        .submit-btn:hover { background: var(--orange); transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 20px var(--shadow); }
+
+        /* FOOTER */
+        .footer {
+            padding: 50px 8%; text-align: center; font-size: 0.9rem; color: #666;
+            background-color: var(--dark); color: rgba(255,255,255,0.7);
+            z-index: var(--content-z-index);
+            position: relative;
+        }
+
+        /* Animations (reveal.css - ajustées pour des apparitions plus belles) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Délai pour les éléments consécutifs */
+        .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .reveal:nth-child(3) { transition-delay: 0.2s; }
+        .reveal:nth-child(4) { transition-delay: 0.3s; }
+        .grid .card.reveal { transition-delay: calc(var(--delay) * 0.1s); } /* Délai par carte */
+
+        @media (max-width: 900px) {
+            .text-image-layout, .contact-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .text-image-layout.reverse { flex-direction: column; }
+            .text-image-layout .illustration { margin-top: 30px; }
+            .contact-info h2 { text-align: center; }
+        }
+        @media (max-width: 600px) {
+            nav { padding: 15px 5%; }
+            nav ul { gap: 20px; }
+            nav ul li a { font-size: 0.85rem; }
+            h2 { margin-bottom: 30px; }
+            .hero h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+            .hero p { font-size: clamp(1rem, 2.5vw, 1.1rem); }
+            .btn { padding: 14px 30px; font-size: 0.9rem; }
+            section { padding: 80px 5%; }
+            .card { padding: 25px; }
+            .contact-content { gap: 50px; }
+            form { padding: 30px; }
+            input, textarea { padding: 14px 18px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">
-            <img src="logo.png" alt="SETTIS Logo">
-        </div>
+        <div class="logo"><img src="logo.png" alt="SETTIS Logo"></div>
         <ul>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Projets</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <canvas id="my-gradient-canvas" data-js-darken-top></canvas>
+    <canvas id="my-gradient-canvas"></canvas>
 
-    <section class="hero">
-        <h1>Digital Agency <span>Settis.</span></h1>
-        <p>Nous concevons des expériences digitales de haute performance pour propulser votre business vers le futur.</p>
-        <a href="#" class="btn">Démarrer un projet</a>
+    <section id="hero" class="hero">
+        <h1 class="reveal">Digital Agency <span>Settis.</span></h1>
+        <p class="reveal" style="transition-delay: 0.2s;">
+            Connecting innovation with reality: we craft high-performance digital solutions for tomorrow's challenges.
+        </p>
+        <a href="#contact" class="btn reveal" style="transition-delay: 0.4s;">Start Your Project</a>
     </section>
 
+    <section id="about">
+        <h2 class="reveal">About <span>SETTIS LLC</span></h2>
+        <div class="section-content">
+            <div class="text-image-layout">
+                <div class="reveal">
+                    <h3>Our Story</h3>
+                    <p>
+                        Founded in 2025 in Missouri, SETTIS LLC is dedicated to creating innovative digital solutions. 
+                        Our team combines years of experience in software development and creative digital innovation, 
+                        focused on delivering solutions that meet today’s needs while preparing for tomorrow’s opportunities.
+                    </p>
+                </div>
+                <div class="illustration reveal" style="transition-delay: 0.2s;">
+                    <img src="about-illustration.png" alt="About SETTIS Illustration">
+                </div>
+            </div>
+
+            <div class="text-image-layout reverse" style="margin-top: 80px;">
+                <div class="reveal">
+                    <h3>Our Core Values</h3>
+                    <div class="grid" style="margin-top: 20px;">
+                        <div class="card reveal" style="--delay:1;">
+                            <i data-lucide="lightbulb"></i>
+                            <h3>Innovation</h3>
+                            <p>Pushing tech boundaries for impactful solutions.</p>
+                        </div>
+                        <div class="card reveal" style="--delay:2;">
+                            <i data-lucide="globe"></i>
+                            <h3>Global Vision</h3>
+                            <p>Solutions designed for international scalability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="illustration reveal" style="transition-delay: 0.2s;">
+                    <img src="values-illustration.png" alt="Core Values Illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="reveal">Our <span>Services</span></h2>
+        <div class="section-content">
+            <div class="text-image-layout">
+                <div class="illustration reveal">
+                    <img src="services-illustration.png" alt="Services Illustration">
+                </div>
+                <div class="reveal">
+                    <h3>Boost Your Business</h3>
+                    <p>At SETTIS, we provide a full range of modern digital services designed to help you achieve your goals efficiently. From custom web apps to engaging PC games.</p>
+                    <div class="grid" style="margin-top: 30px;">
+                        <div class="card reveal" style="--delay:1;">
+                            <i data-lucide="layout-grid"></i>
+                            <h3>Web Development</h3>
+                            <p>Websites, SaaS, e-commerce, API integrations.</p>
+                        </div>
+                        <div class="card reveal" style="--delay:2;">
+                            <i data-lucide="smartphone"></i>
+                            <h3>Mobile Development</h3>
+                            <p>Native iOS & Android, hybrid apps (Flutter, React Native).</p>
+                        </div>
+                        <div class="card reveal" style="--delay:3;">
+                            <i data-lucide="cloud"></i>
+                            <h3>SaaS Solutions</h3>
+                            <p>Scalable platforms, microservices, payment integration.</p>
+                        </div>
+                        <div class="card reveal" style="--delay:4;">
+                            <i data-lucide="gamepad-2"></i>
+                            <h3>PC Game Dev</h3>
+                            <p>Engaging games for Steam and other platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <h2 class="reveal">Our Development <span>Process</span></h2>
+        <div class="section-content process-steps">
+            <div class="process-step reveal" data-step="1" style="--delay:1;">
+                <img src="process-step1.png" alt="Consultation Icon">
+                <h3>Consultation</h3>
+                <p>We start with a detailed consultation to understand your needs and goals.</p>
+            </div>
+            <div class="process-step reveal" data-step="2" style="--delay:2;">
+                <img src="process-step2.png" alt="Development Icon">
+                <h3>Development</h3>
+                <p>Our expert team builds your solution using cutting-edge technologies.</p>
+            </div>
+            <div class="process-step reveal" data-step="3" style="--delay:3;">
+                <img src="process-step3.png" alt="Testing Icon">
+                <h3>Testing</h3>
+                <p>Rigorous testing ensures reliability, security, and high performance.</p>
+            </div>
+            <div class="process-step reveal" data-step="4" data-step="4" style="--delay:4;">
+                <img src="process-step4.png" alt="Deployment Icon">
+                <h3>Deployment</h3>
+                <p>Full deployment and continuous support for your project's success.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="reveal">Start Your <span>Project</span></h2>
+        <div class="contact-content reveal">
+            <div class="contact-info">
+                <h3>Ready to discuss your vision?</h3>
+                <p>Our team is here to help you succeed. Fill out the form or reach us directly.</p>
+                <p style="margin-top: 20px;">
+                    <i data-lucide="mail" style="display:inline-block; vertical-align:middle; margin-right:8px; color:var(--orange);"></i>
+                    <a href="mailto:contact@settis-llc.com">contact@settis-llc.com</a>
+                </p>
+                <p>
+                    <i data-lucide="map-pin" style="display:inline-block; vertical-align:middle; margin-right:8px; color:var(--orange);"></i>
+                    117 South Lexington Street Ste 100<br>Harrisonville, MO 64701, USA
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Opening Hours:</strong><br>
+                    Mon - Fri: 9:00 AM - 6:00 PM CST<br>
+                    Sat: 10:00 AM - 2:00 PM CST
+                </p>
+                <div class="illustration" style="margin-top: 40px;">
+                    <img src="contact-illustration.png" alt="Contact SETTIS Illustration">
+                </div>
+            </div>
+            <form>
+                <input type="text" placeholder="Full Name *" required>
+                <input type="email" placeholder="Email *" required>
+                <input type="text" placeholder="Subject">
+                <textarea placeholder="Your Message *" rows="5" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        &copy; 2025 SETTIS LLC. All rights reserved.
+    </footer>
+
     <script src="gradient.js"></script>
+    <script>
+        // Initialise les icônes Lucide
+        lucide.createIcons();
+
+        // Fonction pour l'animation au scroll
+        function revealElements() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120; // L'élément devient visible quand 120px de celui-ci est visible
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        // Fonction pour la navigation au scroll
+        function handleScroll() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) { // Si l'utilisateur a scrollé de plus de 50px
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            revealElements(); // Appelle aussi la révélation des éléments
+        }
+
+        // Écouteurs d'événements
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("load", () => {
+            handleScroll(); // Vérifie au chargement si des éléments sont déjà visibles
+            // Initialisation du gradient
+            const gradient = new Gradient();
+            gradient.initGradient('#my-gradient-canvas');
+        });
+    </script>
 </body>
 </html>
